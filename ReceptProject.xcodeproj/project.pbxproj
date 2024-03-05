@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		697B2AA52B96787000728159 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697B2AA42B96787000728159 /* HomeView.swift */; };
+		69C4F1552B97AF0E000D4225 /* Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C4F1542B97AF0E000D4225 /* Tabbar.swift */; };
 		85EC92E82B960FF200045693 /* ReceptProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EC92E72B960FF200045693 /* ReceptProjectApp.swift */; };
 		85EC92EC2B960FF400045693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85EC92EB2B960FF400045693 /* Assets.xcassets */; };
 		85EC92EF2B960FF400045693 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85EC92EE2B960FF400045693 /* Preview Assets.xcassets */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		697B2AA42B96787000728159 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		69C4F1542B97AF0E000D4225 /* Tabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbar.swift; sourceTree = "<group>"; };
 		85EC92E42B960FF200045693 /* ReceptProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReceptProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85EC92E72B960FF200045693 /* ReceptProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptProjectApp.swift; sourceTree = "<group>"; };
 		85EC92EB2B960FF400045693 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				85EC92F72B9612BD00045693 /* SearchView.swift */,
 				697B2AA42B96787000728159 /* HomeView.swift */,
 				85EC92FB2B9731E100045693 /* RecipeView.swift */,
+				69C4F1542B97AF0E000D4225 /* Tabbar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				697B2AA52B96787000728159 /* HomeView.swift in Sources */,
+				69C4F1552B97AF0E000D4225 /* Tabbar.swift in Sources */,
 				85EC92F82B9612BD00045693 /* SearchView.swift in Sources */,
 				85EC92FC2B9731E100045693 /* RecipeView.swift in Sources */,
 				85EC92E82B960FF200045693 /* ReceptProjectApp.swift in Sources */,
