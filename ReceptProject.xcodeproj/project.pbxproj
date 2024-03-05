@@ -13,6 +13,10 @@
 		85EC92EF2B960FF400045693 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85EC92EE2B960FF400045693 /* Preview Assets.xcassets */; };
 		85EC92F82B9612BD00045693 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EC92F72B9612BD00045693 /* SearchView.swift */; };
 		85EC92FC2B9731E100045693 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EC92FB2B9731E100045693 /* RecipeView.swift */; };
+		DC2347752B9773A100CDFF66 /* ReceptFull.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2347742B9773A100CDFF66 /* ReceptFull.swift */; };
+		DC2347772B9773B200CDFF66 /* Recept.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2347762B9773B200CDFF66 /* Recept.swift */; };
+		DC2347792B9773D500CDFF66 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2347782B9773D500CDFF66 /* ApiService.swift */; };
+		DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23477B2B97748C00CDFF66 /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +27,10 @@
 		85EC92EE2B960FF400045693 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		85EC92F72B9612BD00045693 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		85EC92FB2B9731E100045693 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		DC2347742B9773A100CDFF66 /* ReceptFull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptFull.swift; sourceTree = "<group>"; };
+		DC2347762B9773B200CDFF66 /* Recept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recept.swift; sourceTree = "<group>"; };
+		DC2347782B9773D500CDFF66 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		DC23477B2B97748C00CDFF66 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,28 +44,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		698E188F2B9614D7009366A4 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				698E18902B9614E2009366A4 /* Views */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		698E18902B9614E2009366A4 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		698E18912B9614E8009366A4 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		698E18922B961539009366A4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -87,10 +73,11 @@
 		85EC92E62B960FF200045693 /* ReceptProject */ = {
 			isa = PBXGroup;
 			children = (
+				DC2347782B9773D500CDFF66 /* ApiService.swift */,
+				DC23477A2B97746500CDFF66 /* ViewModels */,
+				DC2347732B97737400CDFF66 /* Models */,
 				85EC92E72B960FF200045693 /* ReceptProjectApp.swift */,
-				698E188F2B9614D7009366A4 /* Models */,
 				698E18922B961539009366A4 /* Views */,
-				698E18912B9614E8009366A4 /* ViewModels */,
 				85EC92EB2B960FF400045693 /* Assets.xcassets */,
 				85EC92ED2B960FF400045693 /* Preview Content */,
 			);
@@ -103,6 +90,23 @@
 				85EC92EE2B960FF400045693 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DC2347732B97737400CDFF66 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC2347742B9773A100CDFF66 /* ReceptFull.swift */,
+				DC2347762B9773B200CDFF66 /* Recept.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DC23477A2B97746500CDFF66 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DC23477B2B97748C00CDFF66 /* SearchViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,9 +179,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC2347752B9773A100CDFF66 /* ReceptFull.swift in Sources */,
 				697B2AA52B96787000728159 /* HomeView.swift in Sources */,
+				DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */,
 				85EC92F82B9612BD00045693 /* SearchView.swift in Sources */,
 				85EC92FC2B9731E100045693 /* RecipeView.swift in Sources */,
+				DC2347772B9773B200CDFF66 /* Recept.swift in Sources */,
+				DC2347792B9773D500CDFF66 /* ApiService.swift in Sources */,
 				85EC92E82B960FF200045693 /* ReceptProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
