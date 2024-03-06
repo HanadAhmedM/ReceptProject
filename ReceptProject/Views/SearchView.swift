@@ -38,7 +38,7 @@ struct SearchView: View {
                                    .foregroundColor(.green)
                            }
                            
-                           NavigationLink(destination: DestinationView()) {
+                           NavigationLink(destination:FavoriteRecipesView()) {
                                Text("Favorite Recipes")
                                    .foregroundColor(Color(hex: 0xBFBFBF))
                            }
