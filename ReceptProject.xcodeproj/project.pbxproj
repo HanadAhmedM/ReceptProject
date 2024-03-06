@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		697B2AA52B96787000728159 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697B2AA42B96787000728159 /* HomeView.swift */; };
 		69C4F1552B97AF0E000D4225 /* Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C4F1542B97AF0E000D4225 /* Tabbar.swift */; };
+		85C8D0B12B98656C00AEEC7C /* FavoriteRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C8D0B02B98656C00AEEC7C /* FavoriteRecipesView.swift */; };
 		85EC92E82B960FF200045693 /* ReceptProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EC92E72B960FF200045693 /* ReceptProjectApp.swift */; };
 		85EC92EC2B960FF400045693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85EC92EB2B960FF400045693 /* Assets.xcassets */; };
 		85EC92EF2B960FF400045693 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85EC92EE2B960FF400045693 /* Preview Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		697B2AA42B96787000728159 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		69C4F1542B97AF0E000D4225 /* Tabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbar.swift; sourceTree = "<group>"; };
+		85C8D0B02B98656C00AEEC7C /* FavoriteRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesView.swift; sourceTree = "<group>"; };
 		85EC92E42B960FF200045693 /* ReceptProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReceptProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85EC92E72B960FF200045693 /* ReceptProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptProjectApp.swift; sourceTree = "<group>"; };
 		85EC92EB2B960FF400045693 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 				697B2AA42B96787000728159 /* HomeView.swift */,
 				85EC92FB2B9731E100045693 /* RecipeView.swift */,
 				69C4F1542B97AF0E000D4225 /* Tabbar.swift */,
+				85C8D0B02B98656C00AEEC7C /* FavoriteRecipesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -184,15 +187,13 @@
 			files = (
 				DC2347752B9773A100CDFF66 /* ReceptFull.swift in Sources */,
 				697B2AA52B96787000728159 /* HomeView.swift in Sources */,
-
 				DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */,
-
 				69C4F1552B97AF0E000D4225 /* Tabbar.swift in Sources */,
- 
 				85EC92F82B9612BD00045693 /* SearchView.swift in Sources */,
 				85EC92FC2B9731E100045693 /* RecipeView.swift in Sources */,
 				DC2347772B9773B200CDFF66 /* Recept.swift in Sources */,
 				DC2347792B9773D500CDFF66 /* ApiService.swift in Sources */,
+				85C8D0B12B98656C00AEEC7C /* FavoriteRecipesView.swift in Sources */,
 				85EC92E82B960FF200045693 /* ReceptProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
