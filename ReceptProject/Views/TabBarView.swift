@@ -33,8 +33,8 @@ struct TabBarView: View {
                              Text("Calendar")
                          }
                          .tag(2)
-
         }
+        .accentColor(Color.green) // Accent color for the entire TabView
     }
 }
 
