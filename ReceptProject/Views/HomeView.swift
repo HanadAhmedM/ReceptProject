@@ -40,7 +40,7 @@ struct HomeView: View {
                         Text("Get started")
                             .fontWeight(.bold)
                             .padding()
-                            .frame(width: 300)
+                            .frame(width: 350)
                             .font(.system(size: 22))
                             .background(Color.green)
                             .foregroundColor(.white)
