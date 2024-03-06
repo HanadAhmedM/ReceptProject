@@ -36,7 +36,7 @@ struct HomeView: View {
                 VStack {
                     Spacer()
                     
-                    NavigationLink(destination: SearchView()) {
+                    NavigationLink(destination: TabBarView()) {
                         Text("Get started")
                             .fontWeight(.bold)
                             .padding()
@@ -47,6 +47,7 @@ struct HomeView: View {
                             .cornerRadius(30)
                     }
                     .padding(.bottom, 80) // Adjust button placement
+
                 }
             }
         }

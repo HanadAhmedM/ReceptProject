@@ -32,22 +32,6 @@ struct SearchView: View {
                                .cornerRadius(8.0)
                        }
                        
-                       HStack(spacing: 10) {
-                           NavigationLink(destination: DestinationView()) {
-                               Text("Recommend")
-                                   .foregroundColor(.green)
-                           }
-                           
-                           NavigationLink(destination:FavoriteRecipesView()) {
-                               Text("Favorite Recipes")
-                                   .foregroundColor(Color(hex: 0xBFBFBF))
-                           }
-                           
-                           NavigationLink(destination: DestinationView()) {
-                               Text("Meal Plan")
-                                   .foregroundColor(Color(hex: 0xBFBFBF))
-                           }
-                       }
                 VStack{
                     List(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
                         HStack(spacing: 10){
