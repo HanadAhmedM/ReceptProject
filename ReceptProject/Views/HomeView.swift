@@ -46,7 +46,7 @@ struct HomeView: View {
                             .foregroundColor(.white)
                             .cornerRadius(30)
                     }
-                    .padding(.bottom, 80) // Justera knappens placering
+                    .padding(.bottom, 80) // Adjust button placement
                 }
             }
         }
