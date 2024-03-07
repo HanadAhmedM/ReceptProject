@@ -27,7 +27,7 @@ struct TabBarView: View {
                 }
                 .tag(1)
 
-            RecipeView()
+            MealPlanView()
                          .tabItem {
                              Image(systemName: "calendar")
                              Text("Calendar")
