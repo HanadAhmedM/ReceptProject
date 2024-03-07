@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52C4375D2B99A1E600461467 /* MealPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C4375C2B99A1E600461467 /* MealPlanView.swift */; };
 		697B2AA52B96787000728159 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697B2AA42B96787000728159 /* HomeView.swift */; };
 		69C4F1552B97AF0E000D4225 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C4F1542B97AF0E000D4225 /* TabBarView.swift */; };
 		85C8D0B12B98656C00AEEC7C /* FavoriteRecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C8D0B02B98656C00AEEC7C /* FavoriteRecipesView.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52C4375C2B99A1E600461467 /* MealPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MealPlanView.swift; path = ../../../MealPlanView.swift; sourceTree = "<group>"; };
 		697B2AA42B96787000728159 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		69C4F1542B97AF0E000D4225 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		85C8D0B02B98656C00AEEC7C /* FavoriteRecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRecipesView.swift; sourceTree = "<group>"; };
@@ -54,6 +56,8 @@
 				85EC92F72B9612BD00045693 /* SearchView.swift */,
 				697B2AA42B96787000728159 /* HomeView.swift */,
 				85EC92FB2B9731E100045693 /* RecipeView.swift */,
+				69C4F1542B97AF0E000D4225 /* Tabbar.swift */,
+				52C4375C2B99A1E600461467 /* MealPlanView.swift */,
 				69C4F1542B97AF0E000D4225 /* TabBarView.swift */,
 				85C8D0B02B98656C00AEEC7C /* FavoriteRecipesView.swift */,
 			);
@@ -187,6 +191,9 @@
 			files = (
 				DC2347752B9773A100CDFF66 /* ReceptFull.swift in Sources */,
 				697B2AA52B96787000728159 /* HomeView.swift in Sources */,
+				52C4375D2B99A1E600461467 /* MealPlanView.swift in Sources */,
+				DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */,
+				69C4F1552B97AF0E000D4225 /* Tabbar.swift in Sources */,
 				DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */,
 				69C4F1552B97AF0E000D4225 /* TabBarView.swift in Sources */,
 				85EC92F82B9612BD00045693 /* SearchView.swift in Sources */,
