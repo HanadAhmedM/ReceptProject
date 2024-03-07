@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct ReceptBasic: Codable{
+struct ReceptBasic: Codable, Identifiable{
     var id: Int
     var title: String
     var image: String

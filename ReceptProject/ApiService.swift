@@ -37,8 +37,8 @@ class ApiService{
     }
     func exrtactReceptBasic(data: Data) -> [ReceptBasic]{
         if let jsonDictionary = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
-            if let jsonArray = try? JSONSerialization.data(withJSONObject: jsonDictionary["results"]!, options: []){
-                let decodedData = try? JSONDecoder().decode([ReceptBasic].self, from: jsonArray)
+            if let resultsData = try? JSONSerialization.data(withJSONObject: jsonDictionary["results"]!, options: []){
+                let decodedData = try? JSONDecoder().decode([ReceptBasic].self, from: resultsData)
                 return decodedData!
             }
         }
