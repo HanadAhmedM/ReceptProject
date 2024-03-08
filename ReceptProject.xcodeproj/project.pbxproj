@@ -17,9 +17,10 @@
 		85EC92F82B9612BD00045693 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EC92F72B9612BD00045693 /* SearchView.swift */; };
 		85EC92FC2B9731E100045693 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EC92FB2B9731E100045693 /* RecipeView.swift */; };
 		DC2347752B9773A100CDFF66 /* ReceptFull.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2347742B9773A100CDFF66 /* ReceptFull.swift */; };
-		DC2347772B9773B200CDFF66 /* Recept.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2347762B9773B200CDFF66 /* Recept.swift */; };
 		DC2347792B9773D500CDFF66 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2347782B9773D500CDFF66 /* ApiService.swift */; };
 		DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23477B2B97748C00CDFF66 /* SearchViewModel.swift */; };
+		DC8C530B2B9877C200037116 /* NewSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C530A2B9877C200037116 /* NewSearchView.swift */; };
+		DC8C530D2B987C8D00037116 /* ReceptBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C530C2B987C8D00037116 /* ReceptBasic.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +35,10 @@
 		85EC92F72B9612BD00045693 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		85EC92FB2B9731E100045693 /* RecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		DC2347742B9773A100CDFF66 /* ReceptFull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceptFull.swift; sourceTree = "<group>"; };
-		DC2347762B9773B200CDFF66 /* Recept.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recept.swift; sourceTree = "<group>"; };
 		DC2347782B9773D500CDFF66 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		DC23477B2B97748C00CDFF66 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		DC8C530A2B9877C200037116 /* NewSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSearchView.swift; sourceTree = "<group>"; };
+		DC8C530C2B987C8D00037116 /* ReceptBasic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceptBasic.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +60,11 @@
 				85EC92FB2B9731E100045693 /* RecipeView.swift */,
 				69C4F1542B97AF0E000D4225 /* TabBarView.swift */,
 				85C8D0B02B98656C00AEEC7C /* FavoriteRecipesView.swift */,
+
+				DC8C530A2B9877C200037116 /* NewSearchView.swift */,
+
 				69E53D7D2B9A60A6000C2AAE /* MealPlanView.swift */,
+
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -105,7 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				DC2347742B9773A100CDFF66 /* ReceptFull.swift */,
-				DC2347762B9773B200CDFF66 /* Recept.swift */,
+				DC8C530C2B987C8D00037116 /* ReceptBasic.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC8C530B2B9877C200037116 /* NewSearchView.swift in Sources */,
 				DC2347752B9773A100CDFF66 /* ReceptFull.swift in Sources */,
 				697B2AA52B96787000728159 /* HomeView.swift in Sources */,
 				DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */,
@@ -196,9 +203,12 @@
 				69C4F1552B97AF0E000D4225 /* TabBarView.swift in Sources */,
 				85EC92F82B9612BD00045693 /* SearchView.swift in Sources */,
 				85EC92FC2B9731E100045693 /* RecipeView.swift in Sources */,
-				DC2347772B9773B200CDFF66 /* Recept.swift in Sources */,
 				DC2347792B9773D500CDFF66 /* ApiService.swift in Sources */,
+
+				DC8C530D2B987C8D00037116 /* ReceptBasic.swift in Sources */,
+
 				69E53D7E2B9A60A6000C2AAE /* MealPlanView.swift in Sources */,
+
 				85C8D0B12B98656C00AEEC7C /* FavoriteRecipesView.swift in Sources */,
 				85EC92E82B960FF200045693 /* ReceptProjectApp.swift in Sources */,
 			);

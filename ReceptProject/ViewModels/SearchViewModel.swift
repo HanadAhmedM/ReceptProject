@@ -6,9 +6,9 @@
 //
 
 import Foundation
-class SearchViewModel{
-    var currentRecepies: [ReceptBasic] = []
-    var currentRecepie: ReceptFull? = nil
+class SearchViewModel: ObservableObject{
+    @Published var currentRecepies: [ReceptBasic] = []
+    @Published var currentRecepie: ReceptFull? = nil
     func getRecepies(theItems: [String: String]){
         ApiService.shared.getRecepies(someItems: theItems, completion: { recepies in
             self.currentRecepies = recepies
