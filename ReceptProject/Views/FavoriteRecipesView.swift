@@ -9,16 +9,17 @@ import SwiftUI
 
 struct FavoriteRecipesView: View {
     var body: some View {
-        HStack(spacing: 20) {
-                Image(systemName: "chevron.left.circle")
-                    .foregroundColor(Color.green)
-                    .frame(alignment: .leading)
-                Text("Favorite Recipes")
-                .font(.largeTitle)
-                    .foregroundColor(.green)
-                    .frame(alignment: .center)
-            
-            }
+        //Matilda ska fixa detta, men får vara utkommenterat så länge
+       // HStack(spacing: 20) {
+               // Image(systemName: "chevron.left.circle")
+                    //.foregroundColor(Color.green)
+                   // .frame(alignment: .leading)
+               // Text("Favorite Recipes")
+               // .font(.largeTitle)
+                  //  .foregroundColor(.green)
+                  //  .frame(alignment: .center)
+           // }
+        
         VStack{
             List(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
                 HStack(spacing: 10){
