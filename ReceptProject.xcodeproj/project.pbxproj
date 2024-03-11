@@ -20,6 +20,7 @@
 		DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC23477B2B97748C00CDFF66 /* SearchViewModel.swift */; };
 		DC8C530B2B9877C200037116 /* NewSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C530A2B9877C200037116 /* NewSearchView.swift */; };
 		DC8C530D2B987C8D00037116 /* ReceptBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C530C2B987C8D00037116 /* ReceptBasic.swift */; };
+		DCF1426B2B9AFE140075585D /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1426A2B9AFE140075585D /* FilterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		DC23477B2B97748C00CDFF66 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		DC8C530A2B9877C200037116 /* NewSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSearchView.swift; sourceTree = "<group>"; };
 		DC8C530C2B987C8D00037116 /* ReceptBasic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceptBasic.swift; sourceTree = "<group>"; };
+		DCF1426A2B9AFE140075585D /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				69C4F1542B97AF0E000D4225 /* Tabbar.swift */,
 				85C8D0B02B98656C00AEEC7C /* FavoriteRecipesView.swift */,
 				DC8C530A2B9877C200037116 /* NewSearchView.swift */,
+				DCF1426A2B9AFE140075585D /* FilterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				DC2347752B9773A100CDFF66 /* ReceptFull.swift in Sources */,
 				697B2AA52B96787000728159 /* HomeView.swift in Sources */,
 				DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */,
+				DCF1426B2B9AFE140075585D /* FilterView.swift in Sources */,
 				69C4F1552B97AF0E000D4225 /* Tabbar.swift in Sources */,
 				85EC92F82B9612BD00045693 /* SearchView.swift in Sources */,
 				85EC92FC2B9731E100045693 /* RecipeView.swift in Sources */,

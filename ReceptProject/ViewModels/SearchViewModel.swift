@@ -8,7 +8,7 @@
 import Foundation
 class SearchViewModel: ObservableObject{
     @Published var currentRecepies: [ReceptBasic] = []
-    @Published var currentRecepie: ReceptFull? = nil
+    @Published var currentRecepie: ReceptFull = ReceptFull()
     func getRecepies(theItems: [String: String]){
         ApiService.shared.getRecepies(someItems: theItems, completion: { recepies in
             self.currentRecepies = recepies
@@ -16,7 +16,9 @@ class SearchViewModel: ObservableObject{
     }
     func getRecepie(theId: Int){
         ApiService.shared.getRecepie(id: theId, completion: { recepie in
-            self.currentRecepie = recepie
+            DispatchQueue.main.async{
+                self.currentRecepie = recepie
+            }
         })
     }
     func getRecepieInCode(theId: Int) -> ReceptFull{

@@ -178,7 +178,6 @@ class ApiService{
             receptFull.pricePerServing = jsonDictionary["pricePerServing"] as? Double ?? 0.0
             receptFull.creditsText = jsonDictionary["creditsText"] as? String ?? ""
             receptFull.summary = jsonDictionary["summary"] as? String ?? ""
-            print(jsonDictionary)
         }
         return receptFull
     }
