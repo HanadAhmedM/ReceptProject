@@ -31,7 +31,9 @@ struct FavoriteRecipesView: View {
                                     
                                     .cornerRadius(25)
                                     .frame(width: 100, height: 100)
+                                
                                  
+                                
                                 Spacer()
                                 VStack(alignment: .leading) {
                                     Text(recipe.title ?? "Lorem Ipsum")

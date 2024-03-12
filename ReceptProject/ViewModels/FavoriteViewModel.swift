@@ -22,6 +22,7 @@ class FavoriteViewModel : ObservableObject{
             print("Fetch successful. Number of Recipe: \(recipes.count)")
         } catch let error as NSError {
             print("Error fetching notes: \(error.localizedDescription)")
+            
         }
     }
    
