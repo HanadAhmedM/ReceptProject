@@ -13,6 +13,7 @@ struct FilterView: View {
     var sort: [String] = ["meta-score", "pupularity", "healthiness", "price", "time"]
     var cuisine: [String] = ["african", "Asian", "american", "british", "cajun", "caribbean", "chinese", "eastern european", "european", "french", "german", "greek", "indian", "irish", "italian", "japanese", "jewish", "korean", "latin american", "mediteranean", "mexican", "middle eastern", "nordic", "southern", "spanish", "thai", "vietnamese"]
     var intolerances: [String] = ["dairy", "egg", "gluten", "grain", "peanut", "seafood", "sesame", "shellfish", "soy", "sulfite", "tree nut", "wheat"]
+    @State var currentItems: [String: String] = [:]
     @State var equipment: String = ""
     @State var includeIngredients: String = ""
     @State var excludeIngredients: String = ""
@@ -37,22 +38,30 @@ struct FilterView: View {
                     .background(.yellow)
                     .border(width: 6, edges: [.leading, .trailing,  .bottom], color: .green)
                 HStack{
-                    ChoiceView(myItems: $items, query: "sort", options: ["popularity", "price", "time"])
-                    ChoiceView(myItems: $items, query: "type", options: type)
+                    ChoiceView(myItems: $currentItems, query: "sort", options: ["popularity", "price", "time"])
+                        
+                    ChoiceView(myItems: $currentItems, query: "type", options: type)
                 }
                 .padding(.top, 13)
                 HStack{
-                    MultipleChoiceView(myItems: $items, query: "cuisine", options: cuisine)
-                    MultipleChoiceView(myItems: $items, query: "excludeCuisine", options: cuisine)
+                    MultipleChoiceView(myItems: $currentItems, query: "cuisine", options: cuisine)
+                    MultipleChoiceView(myItems: $currentItems, query: "excludeCuisine", options: cuisine)
                 }
-                MultipleChoiceView(myItems: $items, query: "intolerances", options: cuisine)
+                MultipleChoiceView(myItems: $currentItems, query: "intolerances", options: cuisine)
 
                 Text("Ingredients")
                     .fontWeight(.bold)
                     .font(.title3)
                 HStack{
                     customTextField(text: $excludeIngredients, hint: "out: egg,flour")
+                        .onAppear(perform: {
+                            excludeIngredients = items["excludeIngredients"] ?? ""
+                        })
                     customTextField(text: $includeIngredients, hint: "In: egg,flour")
+                        .onAppear(perform: {
+                            includeIngredients = items["includeIngredients"] ?? ""
+                        })
+
                 }
                 HStack{
                     VStack{
@@ -61,6 +70,10 @@ struct FilterView: View {
                                 .font(.title3)
                                 .multilineTextAlignment(.center)
                         customTextField(text: $equipment, hint: "ex: pan,knife")
+                            .onAppear(perform: {
+                                equipment = items["equipment"] ?? ""
+                            })
+
                     }
                     VStack{
                         Text("Author")
@@ -68,6 +81,11 @@ struct FilterView: View {
                                 .font(.title3)
                                 .multilineTextAlignment(.center)
                         customTextField(text: $author, hint: "ex: random guy")
+                            .onAppear(perform: {
+                                author = items["author"] ?? ""
+                            })
+
+                        
                     }
 
                 }
@@ -79,6 +97,7 @@ struct FilterView: View {
 //            @State var author: String = ""
 
             Button(action: {
+                items = currentItems
                 if !equipment.isEmpty{
                     items.updateValue(equipment, forKey: "equipment")
                 }
@@ -113,7 +132,11 @@ struct FilterView: View {
                     .border(width: 3, edges: [.leading, .trailing, .top, .bottom], color: .black)
             })
         }
+        .onAppear(){
+            currentItems = items
+        }
     }
+        
 }
 struct customTextField: View {
     @Binding var text: String

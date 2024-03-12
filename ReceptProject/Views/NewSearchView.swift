@@ -27,6 +27,7 @@ struct NewSearchView: View {
                             items.updateValue(searchingKey, forKey: "query")
                         }
                         vm.getRecepies(theItems: items)
+                        print(items)
                     }, label: {
                         Image(systemName: "magnifyingglass")
                             .padding()
