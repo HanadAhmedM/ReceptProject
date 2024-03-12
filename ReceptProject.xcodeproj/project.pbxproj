@@ -60,11 +60,8 @@
 				85EC92FB2B9731E100045693 /* RecipeView.swift */,
 				69C4F1542B97AF0E000D4225 /* TabBarView.swift */,
 				85C8D0B02B98656C00AEEC7C /* FavoriteRecipesView.swift */,
-
 				DC8C530A2B9877C200037116 /* NewSearchView.swift */,
-
 				69E53D7D2B9A60A6000C2AAE /* MealPlanView.swift */,
-
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,11 +201,8 @@
 				85EC92F82B9612BD00045693 /* SearchView.swift in Sources */,
 				85EC92FC2B9731E100045693 /* RecipeView.swift in Sources */,
 				DC2347792B9773D500CDFF66 /* ApiService.swift in Sources */,
-
 				DC8C530D2B987C8D00037116 /* ReceptBasic.swift in Sources */,
-
 				69E53D7E2B9A60A6000C2AAE /* MealPlanView.swift in Sources */,
-
 				85C8D0B12B98656C00AEEC7C /* FavoriteRecipesView.swift in Sources */,
 				85EC92E82B960FF200045693 /* ReceptProjectApp.swift in Sources */,
 			);
@@ -351,6 +345,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -379,6 +374,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
