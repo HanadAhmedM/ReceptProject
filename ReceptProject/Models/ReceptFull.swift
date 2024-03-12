@@ -38,7 +38,6 @@ struct ReceptFull{
     var cookingMinutes: Int = 0
     var aggregateLikes: Int = 0
     var readyInMinutes: Int = 0
-    
     var license: String = ""
     var sourceName: String = ""
     var sourceUrl: String = ""

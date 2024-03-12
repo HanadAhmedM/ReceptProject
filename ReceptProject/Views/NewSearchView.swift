@@ -10,8 +10,9 @@ import SwiftUI
 struct NewSearchView: View {
     @State var searchingKey: String = ""
     @ObservedObject var vm = SearchViewModel()
+    @State var items: [String: String] = [:]
     var body: some View {
-        ZStack{
+        NavigationView{
             VStack{
                 Text("Let's Cook something delicious")
                     .font(.largeTitle)
@@ -23,8 +24,10 @@ struct NewSearchView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Button(action: {
                         if(!searchingKey.isEmpty){
-                            vm.getRecepies(theItems: ["query": searchingKey])
+                            items.updateValue(searchingKey, forKey: "query")
                         }
+                        vm.getRecepies(theItems: items)
+                        print(items)
                     }, label: {
                         Image(systemName: "magnifyingglass")
                             .padding()
@@ -32,14 +35,17 @@ struct NewSearchView: View {
                             .foregroundStyle(.white)
                             .cornerRadius(8.0)
                     })
-                    
-                    Image(systemName: "line.horizontal.3.decrease.circle")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.green)
-                        .cornerRadius(8.0)
+                    NavigationLink(destination: {
+                        FilterView(items: $items)
+                    }, label: {
+                        Image(systemName: "line.horizontal.3.decrease.circle")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.green)
+                            .cornerRadius(8.0)
+                    })
                 }
                 ScrollView(content: {
                     VStack(alignment: .leading){
@@ -48,7 +54,9 @@ struct NewSearchView: View {
                                 AsyncImage(url: URL(string: recepie.image), scale: 2)
                                         .background(.green)
                                         .border(width: 3, edges: [.trailing], color: Color.green)
-
+                                        .onTapGesture {
+                                            
+                                        }
                                 VStack(){
                                     HStack(){
                                         Spacer()
@@ -65,6 +73,7 @@ struct NewSearchView: View {
                             .padding([.bottom], 20)
                            
                         }
+                        
                     }
                 })
             }
