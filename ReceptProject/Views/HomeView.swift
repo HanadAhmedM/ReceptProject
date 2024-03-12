@@ -45,16 +45,37 @@ struct HomeView: View {
                             .background(Color.green)
                             .foregroundColor(.white)
                             .cornerRadius(20)
+                        
+                        
+                    }
+                    
+                    //.padding(.bottom, 80) // Adjust button placement
+                    NavigationLink(destination: TabBarView()) {
+                        Text("Or sign up")
+                            .fontWeight(.bold)
+                            .padding()
+                            .frame(width: 350)
+                            .font(.subheadline)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(20)
+                        
+                        
                     }
                     .padding(.bottom, 80) // Adjust button placement
+                                       
 
                 }
+                
             }
         }
     }
 }
 
 
-#Preview {
-    HomeView()
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+    }
 }
+
