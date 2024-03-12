@@ -82,6 +82,7 @@ struct NewSearchView: View {
                                             )
                                         }
                                         
+                                        
                                     }
                                     .padding(10)
                                     Text(recepie.title)

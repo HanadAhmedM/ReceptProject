@@ -94,6 +94,7 @@
 		85EC92E62B960FF200045693 /* ReceptProject */ = {
 			isa = PBXGroup;
 			children = (
+				85C5080B2BA0C95400EDC1A7 /* FavoriteRecipeModel.xcdatamodeld */,
 				85EC92E72B960FF200045693 /* ReceptProjectApp.swift */,
 				DC2347782B9773D500CDFF66 /* ApiService.swift */,
 				DC23477A2B97746500CDFF66 /* ViewModels */,
@@ -101,7 +102,6 @@
 				698E18922B961539009366A4 /* Views */,
 				85EC92EB2B960FF400045693 /* Assets.xcassets */,
 				85EC92ED2B960FF400045693 /* Preview Content */,
-				85C5080B2BA0C95400EDC1A7 /* FavoriteRecipeModel.xcdatamodeld */,
 			);
 			path = ReceptProject;
 			sourceTree = "<group>";
