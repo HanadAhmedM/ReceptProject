@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct NewSearchView: View {
+    
+    @ObservedObject var fr = FavoriteViewModel()
+    @State private var showAlert = false
     @State var searchingKey: String = ""
     @ObservedObject var vm = SearchViewModel()
     @State var items: [String: String] = [:]
@@ -60,8 +63,26 @@ struct NewSearchView: View {
                                 VStack(){
                                     HStack(){
                                         Spacer()
-                                        Image(systemName: "heart")
-                                            .foregroundStyle(.green)
+                                        Button(action: {
+                                            if fr.recipes.contains(where: { $0.id == recepie.id }) {
+                                                showAlert = true
+                                            } else {
+                                                fr.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
+                                            }
+                                        }) {
+                                            Image(systemName: "heart")
+                                                .foregroundStyle(.green)
+                                                .cornerRadius(8.0)
+                                        }
+                                        .alert(isPresented: $showAlert) {
+                                            Alert(
+                                                title: Text("Recipe Already Chosen"),
+                                                message: Text("You have already chosen this recipe."),
+                                                dismissButton: .default(Text("OK"))
+                                            )
+                                        }
+                                        
+                                        
                                     }
                                     .padding(10)
                                     Text(recepie.title)
