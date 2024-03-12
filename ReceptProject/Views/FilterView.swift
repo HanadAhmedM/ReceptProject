@@ -179,13 +179,11 @@ struct ChoiceView: View {
                     .padding()
                     .background(.yellow)
                     .foregroundStyle(.black)
-                    .fontWeight(.bold)
                     .border(width: 3, edges: [.leading, .trailing, .top, .bottom], color: .black)
                 Image(systemName: "chevron.up")
                     .frame(width: 30, height: 52)
                     .background(.green)
                     .foregroundStyle(.black)
-                    .fontWeight(.bold)
                     .border(width: 3, edges: [.leading, .trailing, .top, .bottom], color: .black)
 
             }
@@ -250,13 +248,11 @@ struct MultipleChoiceView: View {
                     .padding()
                     .background(.yellow)
                     .foregroundStyle(.black)
-                    .fontWeight(.bold)
                     .border(width: 3, edges: [.leading, .trailing, .top, .bottom], color: .black)
                 Image(systemName: "chevron.up")
                     .frame(width: 30, height: 52)
                     .background(.green)
                     .foregroundStyle(.black)
-                    .fontWeight(.bold)
                     .border(width: 3, edges: [.leading, .trailing, .top, .bottom], color: .black)
 
             }

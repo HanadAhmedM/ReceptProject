@@ -21,8 +21,8 @@ struct TabBarView: View {
     // Array to hold the tabs
     let tabs: [Tab] = [
         Tab(view: AnyView(NewSearchView()), icon: "magnifyingglass", text: "Search"),
-        Tab(view: AnyView(FavoriteRecipesView()), icon: "heart", text: "Favorites"),
-        Tab(view: AnyView(MealPlanView()), icon: "calendar", text: "Calendar")
+        Tab(view: AnyView(FavoriteRecipesView()), icon: "heart", text: "Favorite"),
+        Tab(view: AnyView(MealPlanView()), icon: "calendar", text: "Meal Plan")
     ]
     
     // Constant range for the ForEach loop
