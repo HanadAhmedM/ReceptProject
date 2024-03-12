@@ -17,7 +17,7 @@ struct HomeView: View {
                     .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
                 
-                VStack(spacing: 25.0) {
+                VStack(spacing: 35.0) {
                     Text("Let’s  Cooking")
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -36,17 +36,18 @@ struct HomeView: View {
                 VStack {
                     Spacer()
                     
-                    NavigationLink(destination: SearchView()) {
-                        Text("Get started")
+                    NavigationLink(destination: TabBarView()) {
+                        Text("Get Started")
                             .fontWeight(.bold)
                             .padding()
-                            .frame(width: 300)
-                            .font(.system(size: 22))
+                            .frame(width: 350)
+                            .font(.subheadline)
                             .background(Color.green)
                             .foregroundColor(.white)
-                            .cornerRadius(30)
+                            .cornerRadius(20)
                     }
                     .padding(.bottom, 80) // Adjust button placement
+
                 }
             }
         }
