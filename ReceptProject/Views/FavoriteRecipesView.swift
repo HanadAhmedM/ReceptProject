@@ -10,18 +10,14 @@ import SwiftUI
 struct FavoriteRecipesView: View {
     @StateObject var viewModel = FavoriteViewModel()
     var body: some View {
-        //Matilda ska fixa detta, men får vara utkommenterat så länge
-       // HStack(spacing: 20) {
-               // Image(systemName: "chevron.left.circle")
-                    //.foregroundColor(Color.green)
-                   // .frame(alignment: .leading)
-               // Text("Favorite Recipes")
-               // .font(.largeTitle)
-                  //  .foregroundColor(.green)
-                  //  .frame(alignment: .center)
-           // }
-        
                 VStack {
+                    Text("Favorite Recipe")
+                        .font(.system(size: 25, weight: .bold))
+                        .foregroundStyle(.green)
+                        .padding(.top, 25)
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(6.0)
+                    
                     List(viewModel.recipes, id: \.self) { recipe in
                         // Encapsulate each item in a VStack and HStack
                         VStack {
