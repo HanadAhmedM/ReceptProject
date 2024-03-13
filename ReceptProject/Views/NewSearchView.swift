@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct NewSearchView: View {
+    
+    @ObservedObject var fr = FavoriteViewModel()
+    @State private var showAlert = false
     @State var searchingKey: String = ""
     @ObservedObject var vm = SearchViewModel()
+    @State var items: [String: String] = [:]
     var body: some View {
-        ZStack{
+        NavigationView{
             VStack{
                 Text("Let's Cook something delicious")
                     .font(.largeTitle)
@@ -21,39 +25,70 @@ struct NewSearchView: View {
                         .background(Color.white)
                         .foregroundColor(Color(hex: 0xBFBFBF))
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
                     Button(action: {
                         if(!searchingKey.isEmpty){
-                            vm.getRecepies(theItems: ["query": searchingKey])
+                            items.updateValue(searchingKey, forKey: "query")
                         }
+                        vm.getRecepies(theItems: items)
+                        print(items)
                     }, label: {
                         Image(systemName: "magnifyingglass")
+                            .resizable()
+                            .frame(width: 10, height: 10)
                             .padding()
                             .background(.gray)
                             .foregroundStyle(.white)
                             .cornerRadius(8.0)
                     })
-                    
-                    Image(systemName: "line.horizontal.3.decrease.circle")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.green)
-                        .cornerRadius(8.0)
+                    NavigationLink(destination: {
+                        FilterView(items: $items)
+                    }, label: {
+                        Image(systemName: "line.horizontal.3.decrease.circle")
+                            .resizable()
+                            .frame(width: 10, height: 10)
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.green)
+                            .cornerRadius(8.0)
+                            .padding()
+                    })
                 }
+                
                 ScrollView(content: {
                     VStack(alignment: .leading){
                         ForEach(vm.currentRecepies){recepie in
                             HStack(){
                                 AsyncImage(url: URL(string: recepie.image), scale: 2)
-                                        .background(.green)
-                                        .border(width: 3, edges: [.trailing], color: Color.green)
-
+                                        //.background(.green)
+                                        //.border(width: 3, edges: [.trailing], color: Color.green)
+                                    .cornerRadius(10)
+                                        .onTapGesture {
+                                            
+                                        }
                                 VStack(){
                                     HStack(){
                                         Spacer()
-                                        Image(systemName: "heart")
-                                            .foregroundStyle(.green)
+                                        Button(action: {
+                                            if fr.recipes.contains(where: { $0.id == recepie.id }) {
+                                                showAlert = true
+                                            } else {
+                                                fr.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
+                                            }
+                                        }) {
+                                            Image(systemName: "heart")
+                                                .foregroundStyle(.green)
+                                                .cornerRadius(8.0)
+                                        }
+                                        .alert(isPresented: $showAlert) {
+                                            Alert(
+                                                title: Text("Recipe Already Chosen"),
+                                                message: Text("You have already chosen this recipe."),
+                                                dismissButton: .default(Text("OK"))
+                                            )
+                                        }
+                                        
+                                        
                                     }
                                     .padding(10)
                                     Text(recepie.title)
@@ -61,12 +96,17 @@ struct NewSearchView: View {
                                 }
                             }
                             .frame(width: 350, height: 120, alignment: .center)
-                            .border(width: 3, edges: [.top, .bottom, .trailing, .leading], color: .green)
+                            //.border(width: 1, edges: [.top, .bottom, .trailing, .leading], color: .gray)
                             .padding([.bottom], 20)
+                            
+                            
+                            
                            
                         }
+                        
                     }
                 })
+                    
             }
         }
     }
@@ -92,6 +132,9 @@ extension View {//idk got it from the internet it fixes so that you can have bor
         overlay(EdgeBorder(width: width, edges: edges).foregroundColor(color))
     }
 }
-#Preview {
-    NewSearchView()
+
+struct NewSearchView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewSearchView()
+    }
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct ReceptProjectApp: App {
     var body: some Scene {
         WindowGroup {
-           HomeView()
+           TabBarView()
         }
     }
 }
