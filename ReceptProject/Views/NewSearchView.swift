@@ -17,10 +17,14 @@ struct NewSearchView: View {
     var body: some View {
         NavigationView{
             VStack{
-                Text("Let's Cook something delicious")
-                    .font(.largeTitle)
+                Text("Let's Cook\nsomething delicious")
+                    .font(.system(size: 25, weight: .bold))
                     .foregroundStyle(.green)
+                    .padding(.top, 25)
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(6.0)
                 HStack{
+                    Spacer()
                     TextField("Search recipe...", text: $searchingKey)
                         .background(Color.white)
                         .foregroundColor(Color(hex: 0xBFBFBF))
@@ -41,6 +45,9 @@ struct NewSearchView: View {
                             .foregroundStyle(.white)
                             .cornerRadius(8.0)
                     })
+                    
+                    .padding(.trailing, -10)
+
                     NavigationLink(destination: {
                         FilterView(items: $items)
                     }, label: {

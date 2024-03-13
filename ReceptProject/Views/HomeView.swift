@@ -33,7 +33,7 @@ struct HomeView: View {
                 .frame(width: 250.0)
                 .multilineTextAlignment(.center)
 
-                VStack {
+                VStack(spacing: 20) {
                     Spacer()
                     
                     NavigationLink(destination: TabBarView()) {

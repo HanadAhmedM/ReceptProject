@@ -21,22 +21,13 @@ struct MealPlanView: View {
 
     var body: some View {
         VStack {
-            // Header with back button and title
+            Text("Meal Plan")
+                .font(.system(size: 25, weight: .bold))
+                .foregroundStyle(.green)
+                .padding(.top, 25)
+                .multilineTextAlignment(.center)
+                .lineSpacing(6.0)
             HStack {
-                Button(action: {
-                    // Action for back navigation
-                }) {
-                    Image(systemName: "chevron.left.circle.fill")
-                        .foregroundColor(Color.green)
-                }
-                Spacer()
-                Text("Meal Plan")
-                    .font(.largeTitle)
-                    .foregroundColor(.green)
-                Spacer()
-            }
-            .padding()
-
             // Horizontal ScrollView for days of the week buttons
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) { // Added spacing between buttons
@@ -53,7 +44,6 @@ struct MealPlanView: View {
                                         .font(.system(size: 18, weight: .bold))
                                     Text(date)
                                         .foregroundColor(Color.green)
-                                        .padding()
                                         .background(Color.white)
                                         .font(.system(size: 18, weight: .bold))
                                         .frame(width: 70, height: 50)
@@ -68,7 +58,7 @@ struct MealPlanView: View {
                 }
                 .padding()
             }
-
+        }
             // Section for meal planning based on the selected day
             if let day = selectedDay {
                 Text("Plan meals for \(day)")
