@@ -10,7 +10,9 @@ class ApiService{
     static let shared = ApiService()
     //Api Keys
     //600587a1ca9e4a99ae2b58baee5958b5         Abdulrahman. Använd den fritt :)
-    let apiKey = "8abf48eb28ad4c33b5749b723e87acd5"
+    //38d1af21ef59455da6cab677116a2c35         Abdulrahman. Använd den fritt :)
+    //8abf48eb28ad4c33b5749b723e87acd5         Hanad
+    let apiKey = "38d1af21ef59455da6cab677116a2c35"
     let baseUrl = "https://api.spoonacular.com"
     //https://api.spoonacular.com/recipes/complexSearch?apiKey=600587a1ca9e4a99ae2b58baee5958b5
     let session = URLSession.shared
