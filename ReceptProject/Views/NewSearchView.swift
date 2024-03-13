@@ -21,9 +21,10 @@ struct NewSearchView: View {
                     .font(.system(size: 25, weight: .bold))
                     .foregroundStyle(.green)
                     .padding(.top, 25)
+                    .padding(.bottom, 25)              
                     .multilineTextAlignment(.center)
                     .lineSpacing(6.0)
-                HStack{
+                HStack {
                     Spacer()
                     TextField("Search recipe...", text: $searchingKey)
                         .background(Color.white)
@@ -44,8 +45,8 @@ struct NewSearchView: View {
                             .background(.gray)
                             .foregroundStyle(.white)
                             .cornerRadius(8.0)
+                            .foregroundColor(searchingKey.isEmpty ? .gray : .white) // Change color based on condition
                     })
-                    
                     .padding(.trailing, -10)
 
                     NavigationLink(destination: {
@@ -54,32 +55,33 @@ struct NewSearchView: View {
                         Image(systemName: "line.horizontal.3.decrease.circle")
                             .resizable()
                             .frame(width: 10, height: 10)
-                            .foregroundColor(.white)
                             .padding()
                             .background(Color.green)
                             .cornerRadius(8.0)
+                            .foregroundColor(.white)
                             .padding()
                     })
                 }
+
                 
                 List(vm.currentRecepies, id: \.id) { recepie in
-                    HStack(){
+                    HStack {
                         AsyncImage(url: URL(string: recepie.image), scale: 2.5)
                             .cornerRadius(10)
-                                .onTapGesture {
-                                    
-                                }
-                        VStack(){
-                            HStack(){
-                                HStack {
-                                        Spacer().frame(width: 25) // Fixed width for consistent spacing
-                                        Text(recepie.title)
-                                            .font(.system(size: 12, weight: .bold))
-                                            .foregroundStyle(.green)
-                                            .padding(.trailing, 18) // Adjust padding here
-                                        Spacer()
-                                    }
+                            .onTapGesture {
+                                // Handle tap on recipe image if needed
+                            }
+                        
+                        VStack {
+                            HStack {
+                                Spacer().frame(width: 25) // Fixed width for consistent spacing
+                                Text(recepie.title)
+                                    .font(.system(size: 12, weight: .bold))
+                                    .foregroundStyle(.green)
+                                    .padding(.trailing, 18) // Adjust padding here
+                                Spacer()
                                 
+                                // Use separate @State variable for each heart button
                                 Button(action: {
                                     if fr.recipes.contains(where: { $0.id == recepie.id }) {
                                         showAlert = true
@@ -87,12 +89,10 @@ struct NewSearchView: View {
                                         fr.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
                                     }
                                 }) {
-                                    Image(systemName: "heart")
-                                        .foregroundStyle(.green)
-                                        
+                                    Image(systemName: "heart\(fr.recipes.contains(where: { $0.id == recepie.id }) ? ".fill" : "")")
+                                        .foregroundColor(fr.recipes.contains(where: { $0.id == recepie.id }) ? .green : .green)
                                 }
                                 .padding(.trailing, -10)
-                                
                                 .alert(isPresented: $showAlert) {
                                     Alert(
                                         title: Text("Recipe Already Chosen"),
@@ -100,18 +100,11 @@ struct NewSearchView: View {
                                         dismissButton: .default(Text("OK"))
                                     )
                                 }
-                                
-                                
                             }
-                            
-                            
-                
                         }
                     }
-                    
                     .frame(width: 300, height: 100, alignment: .leading)
                 }
-                    
             }
         }
     }
