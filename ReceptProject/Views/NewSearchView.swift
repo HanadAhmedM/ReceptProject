@@ -63,12 +63,10 @@ struct NewSearchView: View {
                 }
                 
                 ScrollView(content: {
-                    VStack(alignment: .leading){
+                    VStack(alignment: .leading, spacing: 10) {
                         ForEach(vm.currentRecepies){recepie in
                             HStack(){
-                                AsyncImage(url: URL(string: recepie.image), scale: 2)
-                                        //.background(.green)
-                                        //.border(width: 3, edges: [.trailing], color: Color.green)
+                                AsyncImage(url: URL(string: recepie.image), scale: 2.5)
                                     .cornerRadius(10)
                                         .onTapGesture {
                                             
@@ -87,6 +85,8 @@ struct NewSearchView: View {
                                                 .foregroundStyle(.green)
                                                 .cornerRadius(8.0)
                                         }
+                                        .padding(.trailing, 15.0) //
+
                                         .alert(isPresented: $showAlert) {
                                             Alert(
                                                 title: Text("Recipe Already Chosen"),
@@ -97,16 +97,21 @@ struct NewSearchView: View {
                                         
                                         
                                     }
-                                    .padding(10)
-                                    Text(recepie.title)
-                                    Spacer()
+                                    
+                                    HStack {
+                                            Spacer().frame(width: 30) // Fixed width for consistent spacing
+                                            Text(recepie.title)
+                                                .font(.system(size: 12, weight: .bold))
+                                                .foregroundStyle(.green)
+                                                .padding(.trailing, 25.0) //
+                                            Spacer()
+                                        }
+                                    
+                        
                                 }
                             }
-                            .frame(width: 350, height: 120, alignment: .center)
-                            //.border(width: 1, edges: [.top, .bottom, .trailing, .leading], color: .gray)
-                            .padding([.bottom], 20)
                             
-                            
+                            .frame(width: 350, height: 100, alignment: .leading)
                             
                            
                         }
