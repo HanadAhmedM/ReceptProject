@@ -62,62 +62,55 @@ struct NewSearchView: View {
                     })
                 }
                 
-                ScrollView(content: {
-                    VStack(alignment: .leading, spacing: 10) {
-                        ForEach(vm.currentRecepies){recepie in
-                            HStack(){
-                                AsyncImage(url: URL(string: recepie.image), scale: 2.5)
-                                    .cornerRadius(10)
-                                        .onTapGesture {
-                                            
-                                        }
-                                VStack(){
-                                    HStack(){
-                                        Spacer()
-                                        Button(action: {
-                                            if fr.recipes.contains(where: { $0.id == recepie.id }) {
-                                                showAlert = true
-                                            } else {
-                                                fr.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
-                                            }
-                                        }) {
-                                            Image(systemName: "heart")
-                                                .foregroundStyle(.green)
-                                                .cornerRadius(8.0)
-                                        }
-                                        .padding(.trailing, 15.0) //
-
-                                        .alert(isPresented: $showAlert) {
-                                            Alert(
-                                                title: Text("Recipe Already Chosen"),
-                                                message: Text("You have already chosen this recipe."),
-                                                dismissButton: .default(Text("OK"))
-                                            )
-                                        }
-                                        
-                                        
-                                    }
+                List(vm.currentRecepies, id: \.id) { recepie in
+                    HStack(){
+                        AsyncImage(url: URL(string: recepie.image), scale: 2.5)
+                            .cornerRadius(10)
+                                .onTapGesture {
                                     
-                                    HStack {
-                                            Spacer().frame(width: 30) // Fixed width for consistent spacing
-                                            Text(recepie.title)
-                                                .font(.system(size: 12, weight: .bold))
-                                                .foregroundStyle(.green)
-                                                .padding(.trailing, 25.0) //
-                                            Spacer()
-                                        }
-                                    
-                        
                                 }
+                        VStack(){
+                            HStack(){
+                                HStack {
+                                        Spacer().frame(width: 25) // Fixed width for consistent spacing
+                                        Text(recepie.title)
+                                            .font(.system(size: 12, weight: .bold))
+                                            .foregroundStyle(.green)
+                                            .padding(.trailing, 18) // Adjust padding here
+                                        Spacer()
+                                    }
+                                
+                                Button(action: {
+                                    if fr.recipes.contains(where: { $0.id == recepie.id }) {
+                                        showAlert = true
+                                    } else {
+                                        fr.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
+                                    }
+                                }) {
+                                    Image(systemName: "heart")
+                                        .foregroundStyle(.green)
+                                        
+                                }
+                                .padding(.trailing, -10)
+                                
+                                .alert(isPresented: $showAlert) {
+                                    Alert(
+                                        title: Text("Recipe Already Chosen"),
+                                        message: Text("You have already chosen this recipe."),
+                                        dismissButton: .default(Text("OK"))
+                                    )
+                                }
+                                
+                                
                             }
                             
-                            .frame(width: 350, height: 100, alignment: .leading)
                             
-                           
+                
                         }
-                        
                     }
-                })
+                    
+                    .frame(width: 300, height: 100, alignment: .leading)
+                }
                     
             }
         }
