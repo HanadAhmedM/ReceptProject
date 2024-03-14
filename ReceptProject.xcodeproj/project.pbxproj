@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		691A14E92BA362BD003DE189 /* MealPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691A14E82BA362BD003DE189 /* MealPlanViewModel.swift */; };
+		691A14F32BA3A357003DE189 /* MealPlanModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 691A14F12BA3A357003DE189 /* MealPlanModel.xcdatamodeld */; };
+		691A14F52BA3A496003DE189 /* MealPlanPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691A14F42BA3A496003DE189 /* MealPlanPersistence.swift */; };
 		697B2AA52B96787000728159 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697B2AA42B96787000728159 /* HomeView.swift */; };
 		69C4F1552B97AF0E000D4225 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C4F1542B97AF0E000D4225 /* TabBarView.swift */; };
 		69E53D7E2B9A60A6000C2AAE /* MealPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E53D7D2B9A60A6000C2AAE /* MealPlanView.swift */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		691A14E82BA362BD003DE189 /* MealPlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanViewModel.swift; sourceTree = "<group>"; };
+		691A14F22BA3A357003DE189 /* MealPlanModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MealPlanModel.xcdatamodel; sourceTree = "<group>"; };
+		691A14F42BA3A496003DE189 /* MealPlanPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanPersistence.swift; sourceTree = "<group>"; };
 		697B2AA42B96787000728159 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		69C4F1542B97AF0E000D4225 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		69E53D7D2B9A60A6000C2AAE /* MealPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanView.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				85C5080B2BA0C95400EDC1A7 /* FavoriteRecipeModel.xcdatamodeld */,
+				691A14F12BA3A357003DE189 /* MealPlanModel.xcdatamodeld */,
 				85EC92E72B960FF200045693 /* ReceptProjectApp.swift */,
 				DC2347782B9773D500CDFF66 /* ApiService.swift */,
 				DC23477A2B97746500CDFF66 /* ViewModels */,
@@ -132,6 +137,7 @@
 				85C5080E2BA0C97C00EDC1A7 /* Persistence.swift */,
 				85C508102BA0C9AD00EDC1A7 /* FavoriteViewModel.swift */,
 				691A14E82BA362BD003DE189 /* MealPlanViewModel.swift */,
+				691A14F42BA3A496003DE189 /* MealPlanPersistence.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -211,6 +217,7 @@
 				697B2AA52B96787000728159 /* HomeView.swift in Sources */,
 				DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */,
 				691A14E92BA362BD003DE189 /* MealPlanViewModel.swift in Sources */,
+				691A14F32BA3A357003DE189 /* MealPlanModel.xcdatamodeld in Sources */,
 				DCF1426B2B9AFE140075585D /* FilterView.swift in Sources */,
 				69C4F1552B97AF0E000D4225 /* TabBarView.swift in Sources */,
 				69C4F1552B97AF0E000D4225 /* TabBarView.swift in Sources */,
@@ -218,6 +225,7 @@
 				DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */,
 				69C4F1552B97AF0E000D4225 /* TabBarView.swift in Sources */,
 				85C5080F2BA0C97C00EDC1A7 /* Persistence.swift in Sources */,
+				691A14F52BA3A496003DE189 /* MealPlanPersistence.swift in Sources */,
 				85EC92F82B9612BD00045693 /* SearchView.swift in Sources */,
 				85EC92FC2B9731E100045693 /* RecipeView.swift in Sources */,
 				DC2347792B9773D500CDFF66 /* ApiService.swift in Sources */,
@@ -433,6 +441,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		691A14F12BA3A357003DE189 /* MealPlanModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				691A14F22BA3A357003DE189 /* MealPlanModel.xcdatamodel */,
+			);
+			currentVersion = 691A14F22BA3A357003DE189 /* MealPlanModel.xcdatamodel */;
+			path = MealPlanModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		85C5080B2BA0C95400EDC1A7 /* FavoriteRecipeModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

@@ -101,16 +101,7 @@ struct NewSearchView: View {
                                     )
                                 }
 
-                                Button(action: {
-                                    if mp.recipes.contains(where: { $0.id == recepie.id }) {
-                                        showAlert = true
-                                    } else {
-                                        mp.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
-                                    }
-                                }) {
-                                    Image(systemName: "plus.circle")
-                                        .foregroundColor(mp.recipes.contains(where: { $0.id == recepie.id }) ? .green : .green)
-                                }
+                                
                                 .padding(.leading, 10) // Justera padding efter behov
 
                             }
