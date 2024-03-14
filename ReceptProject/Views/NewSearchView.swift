@@ -100,6 +100,15 @@ struct NewSearchView: View {
                                         dismissButton: .default(Text("OK"))
                                     )
                                 }
+
+                                Button(action: {
+                               // Add your functionality here for the plus button
+                                // For example, you can perform an action or navigate to another view
+                                }) {
+                                Image(systemName: "plus.circle")
+                                .foregroundColor(.green)
+                                .padding(.leading, 10) // Adjust padding as needed
+                              }
                             }
                         }
                     }
