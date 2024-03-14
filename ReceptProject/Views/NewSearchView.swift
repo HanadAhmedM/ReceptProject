@@ -9,7 +9,9 @@ import SwiftUI
 
 struct NewSearchView: View {
     
+    
     @ObservedObject var fr = FavoriteViewModel()
+    @ObservedObject var mp = MealPlanViewModel()
     @State private var showAlert = false
     @State var searchingKey: String = ""
     @ObservedObject var vm = SearchViewModel()
@@ -39,7 +41,6 @@ struct NewSearchView: View {
                         print(items)
                     }, label: {
                         Image(systemName: "magnifyingglass")
-                            .resizable()
                             .frame(width: 10, height: 10)
                             .padding()
                             .background(.gray)
@@ -53,7 +54,6 @@ struct NewSearchView: View {
                         FilterView(items: $items)
                     }, label: {
                         Image(systemName: "line.horizontal.3.decrease.circle")
-                            .resizable()
                             .frame(width: 10, height: 10)
                             .padding()
                             .background(Color.green)
@@ -102,13 +102,17 @@ struct NewSearchView: View {
                                 }
 
                                 Button(action: {
-                               // Add your functionality here for the plus button
-                                // For example, you can perform an action or navigate to another view
+                                    if mp.recipes.contains(where: { $0.id == recepie.id }) {
+                                        showAlert = true
+                                    } else {
+                                        mp.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
+                                    }
                                 }) {
-                                Image(systemName: "plus.circle")
-                                .foregroundColor(.green)
-                                .padding(.leading, 10) // Adjust padding as needed
-                              }
+                                    Image(systemName: "plus.circle")
+                                        .foregroundColor(mp.recipes.contains(where: { $0.id == recepie.id }) ? .green : .green)
+                                }
+                                .padding(.leading, 10) // Justera padding efter behov
+
                             }
                         }
                     }

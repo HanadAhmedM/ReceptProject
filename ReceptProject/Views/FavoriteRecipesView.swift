@@ -15,6 +15,7 @@ var body: some View {
                     .font(.system(size: 25, weight: .bold))
                     .foregroundStyle(.green)
                     .padding(.top, 25)
+                    .padding(.bottom, 25)
                     .multilineTextAlignment(.center)
                     .lineSpacing(6.0)
                 

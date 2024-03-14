@@ -11,6 +11,7 @@ struct MealPlanView: View {
     let dateFormatter = DateFormatter()
     let dayFormatter = DateFormatter()
 
+    @StateObject var viewModel = MealPlanViewModel()
     @State private var selectedDay: String? // Holds the selected day
 
     init() {
@@ -68,19 +69,49 @@ struct MealPlanView: View {
                 }
             }
             // Section for meal planning based on the selected day
-            if let day = selectedDay {
-                Text("Plan meals for \(day)")
-                    .font(.title)
-                    .foregroundColor(Color.green)
-                    .padding()
-            }
+               if let day = selectedDay {
+                   Text("Plan meals for \(day)")
+                       .font(.title)
+                       .foregroundColor(Color.green)
+                       .padding()
 
-            Spacer()
-        }
-        .padding()
-    }
-}
-
+                   // List for displaying meal plans
+                   List(viewModel.recipes, id: \.self) { recipe in
+                       // Encapsulate each item in a VStack and HStack
+                       HStack {
+                           AsyncImage(url: URL(string: recipe.image ?? ""), scale: 2.5)
+                               .cornerRadius(10)
+                           
+                           VStack(){
+                               HStack (){
+                                   HStack {
+                                       Spacer().frame(width: 25)
+                                       Text(recipe.title ?? "Lorem Ipsum")
+                                           .font(.system(size: 12, weight: .bold))
+                                           .foregroundStyle(.green)
+                                       Spacer()
+                                   }
+                               
+                                   Button(action: {
+                                       viewModel.deleteMealPlan(recipe: recipe)
+                                   }) {
+                                       Image(systemName: "xmark.circle.fill")
+                                           .foregroundColor(Color.red)
+                                           .padding()
+                                   }
+                                   .padding(.trailing, -10)
+                               }
+                           }
+                       }
+                       .frame(width: 300, height: 100, alignment: .leading)
+                   }
+               }
+               
+               Spacer()
+           }
+           .padding()
+       }
+   }
 
 #Preview {
     MealPlanView()
