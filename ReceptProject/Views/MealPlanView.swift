@@ -10,16 +10,16 @@ import SwiftUI
 struct MealPlanView: View {
     let dateFormatter = DateFormatter()
     let dayFormatter = DateFormatter()
-
+    
     @StateObject var viewModel = MealPlanViewModel()
     @State private var selectedDay: String? // Holds the selected day
-
+    
     init() {
         // Initialize date and day formatters
         dateFormatter.dateFormat = "d" // Set the date format to display day of the month
         dayFormatter.dateFormat = "E" // Set the date format to get the short weekday string
     }
-
+    
     var body: some View {
         VStack {
             Text("Meal Plan")
@@ -61,57 +61,71 @@ struct MealPlanView: View {
                                             )
                                     }
                                 }
-
+                                
                             }
                         }
                     }
                     .padding()
                 }
             }
+            
             // Section for meal planning based on the selected day
-               if let day = selectedDay {
-                   Text("Plan meals for \(day)")
-                       .font(.title)
-                       .foregroundColor(Color.green)
-                       .padding()
+            if let day = selectedDay {
+                HStack {
+                Text("Add meal for \(day)")
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundStyle(.green)
+                    .padding(.top, 25)
+                    .padding(.bottom, 25)
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(6.0)
+                
+                Button(action: {
+                            // Action when the plus button is tapped
+                        }) {
+                            Image(systemName: "plus.circle")
+                                .foregroundColor(.green)
+                                .font(.system(size: 25))
+                        }
+                    }
+            }
+                
+                // List for displaying meal plans
+                List(viewModel.recipes, id: \.self) { recipe in
+                    // Encapsulate each item in a VStack and HStack
+                    HStack {
+                        AsyncImage(url: URL(string: recipe.image ?? ""), scale: 2.5) // Ändrade från recipe till meal
+                            .cornerRadius(10)
+                        
+                        VStack(){
+                            HStack (){
+                                HStack {
+                                    Spacer().frame(width: 25)
+                                    Text(recipe.title ?? "Lorem Ipsum") // Ändrade från recipe till meal
+                                        .font(.system(size: 12, weight: .bold))
+                                        .foregroundStyle(.green)
+                                    Spacer()
+                                }
+                                
+                                Button(action: {
+                                    viewModel.deleteMealPlan(recipe: recipe)
+                                }) {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .foregroundColor(Color.red)
+                                        .padding()
+                                }
+                                .padding(.trailing, -10)
+                            }
+                        }
+                    }
+                    .frame(width: 300, height: 100, alignment: .leading)
+                }
+            }
+            
+            Spacer()
+        }
+    }
 
-                   // List for displaying meal plans
-                   List(viewModel.meals, id: \.self) { meal in // Ändrade från recipes till meals
-                       // Encapsulate each item in a VStack and HStack
-                       HStack {
-                           AsyncImage(url: URL(string: meal.image ?? ""), scale: 2.5) // Ändrade från recipe till meal
-                               .cornerRadius(10)
-                           
-                           VStack(){
-                               HStack (){
-                                   HStack {
-                                       Spacer().frame(width: 25)
-                                       Text(meal.title ?? "Lorem Ipsum") // Ändrade från recipe till meal
-                                           .font(.system(size: 12, weight: .bold))
-                                           .foregroundStyle(.green)
-                                       Spacer()
-                                   }
-                               
-                                   Button(action: {
-                                       viewModel.deleteMealPlan(meal: meal) // Ändrade från recipe till meal
-                                   }) {
-                                       Image(systemName: "xmark.circle.fill")
-                                           .foregroundColor(Color.red)
-                                           .padding()
-                                   }
-                                   .padding(.trailing, -10)
-                               }
-                           }
-                       }
-                       .frame(width: 300, height: 100, alignment: .leading)
-                   }
-               }
-               
-               Spacer()
-           }
-           .padding()
-       }
-   }
 
 #Preview {
     MealPlanView()
