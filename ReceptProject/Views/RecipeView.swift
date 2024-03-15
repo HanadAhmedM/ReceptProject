@@ -10,22 +10,24 @@ import SwiftUI
 struct RecipeView: View {
     var body: some View {
         VStack{
+            // Header
                HStack(spacing: 20) {
-                       Image(systemName: "chevron.left.circle")
+                       Image(systemName: "chevron.left.circle") // Back button
                            .foregroundColor(Color.green)
                            .frame(alignment: .leading)
-                       Text("Recipie")
+                       Text("Recipie") // Title
                        .font(.largeTitle)
                            .foregroundColor(.green)
                            .frame(alignment: .center)
                    
                    }
+            // Recipe details
                VStack(spacing: 10){
-                   Image("1")
+                   Image("1") // Recipe image
                        .resizable()
                        .cornerRadius(25)
                        .frame(width: 430,height: 291)
-                   Text("Ice Cream").bold()
+                   Text("Ice Cream").bold() // Recipe name
                        .font(.title)
                        .foregroundColor(Color.green)
                        .frame(alignment: .leadingFirstTextBaseline)
@@ -35,9 +37,11 @@ struct RecipeView: View {
                    
                   
                        }
+            // Ingredients section
                Text("Ingredients").font(.title2)    .font(.title2)
                    .foregroundColor(Color.green)
                    .frame(maxWidth: .infinity, alignment: .leading)
+            // List of ingredients
                List(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
                    HStack{
                        

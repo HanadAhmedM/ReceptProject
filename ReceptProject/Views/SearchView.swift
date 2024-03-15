@@ -8,21 +8,25 @@
 import SwiftUI
 
 struct SearchView: View {
+    // State variable to store the search key
     @State var searchingKey: String = ""
         var body: some View {
             VStack(spacing: 20) {
+                // Title text
                        Text("Let’s cook something delicious")
                     .font(.largeTitle)
                            .foregroundColor(.green)
                          
-                       
+                // Search bar
                        HStack {
+                           // Text field for searching
                            TextField("Search recipe...", text: $searchingKey)
                                .padding(.horizontal)
                                .background(Color.white)
                                .foregroundColor(Color(hex: 0xBFBFBF))
                                .textFieldStyle(RoundedBorderTextFieldStyle())
                            
+                           // Search button
                            Image(systemName: "line.horizontal.3.decrease.circle")
                                .resizable()
                                .frame(width: 20, height: 20)
@@ -31,10 +35,13 @@ struct SearchView: View {
                                .background(Color.green)
                                .cornerRadius(8.0)
                        }
-                       
+                
+                // Recipe list
                 VStack{
                     List(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
+                        // Recipe item view
                         HStack(spacing: 10){
+                            // Recipe image
                             Image("1")
                                 .resizable()
                                 .cornerRadius(25)
@@ -53,6 +60,7 @@ struct SearchView: View {
                             
                             Spacer()
                             
+                            // Favorite button
                             Image(systemName: "heart.fill")
                                     .foregroundColor(Color.green)  // Set the foreground color of the heart to green
                                     .padding()
@@ -77,6 +85,7 @@ struct SearchView: View {
            }
 
            extension Color {
+               // Initialize color with hex value
                init(hex: UInt, alpha: Double = 1.0) {
                    self.init(
                        .sRGB,

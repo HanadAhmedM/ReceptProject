@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    // State variables to track the navigation link activation
     @State private var isGetStartedActive = false
     @State private var isSignUpActive = false
     
@@ -21,11 +22,13 @@ struct HomeView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack(spacing: 35.0) {
+                    // Title text
                     Text("Let’s  Cooking")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                     
+                    // Subtitle text
                     Text("Delicious and detailed restaurant recipes on your phone")
                         .font(.system(size: 22))
                         .fontWeight(.bold)
@@ -38,6 +41,7 @@ struct HomeView: View {
                 VStack(spacing: 20) {
                     Spacer()
                     
+                    // Navigation link to the TabBarView
                     NavigationLink(destination: TabBarView(), isActive: $isGetStartedActive) {
                         Text("Get Started")
                             .fontWeight(.bold)
@@ -47,16 +51,19 @@ struct HomeView: View {
                             .background(isGetStartedActive ? Color.green.opacity(0) : Color.green)
                             .foregroundColor(isGetStartedActive ? .green : .white)
                             .cornerRadius(20)
+                        // Add border around button when active
                             .overlay(
                                 RoundedRectangle(cornerRadius: 20)
                                     .stroke(Color.green, lineWidth: 2)
                                     .opacity(isGetStartedActive ? 1 : 0)
                             )
                     }
+                    // Activate the navigation link on tap
                     .simultaneousGesture(TapGesture().onEnded {
                         isGetStartedActive = true
                     })
                     
+                    // Navigation link to the SignInView
                     NavigationLink(destination: SignInView(), isActive: $isSignUpActive) {
                         Text("Or sign up")
                             .fontWeight(.bold)
