@@ -14,7 +14,7 @@ struct RecipeView: View {
                        Image(systemName: "chevron.left.circle")
                            .foregroundColor(Color.green)
                            .frame(alignment: .leading)
-                       Text("Recipie")
+                       Text("Recipe")
                        .font(.largeTitle)
                            .foregroundColor(.green)
                            .frame(alignment: .center)
@@ -28,7 +28,7 @@ struct RecipeView: View {
                    Text("Ice Cream").bold()
                        .font(.title)
                        .foregroundColor(Color.green)
-                       .frame(alignment: .leadingFirstTextBaseline)
+                     //  .frame(alignment: .leadingFirstTextBaseline)
                    Text("Dolor sit ipsum, dolor sit ipsum  ipsum dolor sit. Ipsum dolor sit.  ipsum dolor sit. Ipsum dolor sit.  ipsum dolor sit. Ipsum dolor sit.").foregroundColor(.secondary)
                        .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
                    
@@ -55,6 +55,8 @@ struct RecipeView: View {
           
            }
 
-#Preview {
-    RecipeView()
+struct RecipeView_Previews: PreviewProvider {
+    static var previews: some View {
+        RecipeView()
+    }
 }

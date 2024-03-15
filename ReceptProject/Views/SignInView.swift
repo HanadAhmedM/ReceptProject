@@ -41,7 +41,7 @@ struct SignInView: View {
                         .cornerRadius(10)
                         .border(.red, width: CGFloat(wrongUsername))
                     
-                    SecureField("Username", text: $password)
+                    SecureField("Password", text: $password)
                         .padding()
                         .frame(width: 300, height: 50)
                         .background(Color.black.opacity(0.05))
