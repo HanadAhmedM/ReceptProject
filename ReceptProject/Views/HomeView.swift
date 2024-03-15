@@ -57,7 +57,7 @@ struct HomeView: View {
                         isGetStartedActive = true
                     })
                     
-                    NavigationLink(destination: TabBarView(), isActive: $isSignUpActive) {
+                    NavigationLink(destination: SignInView(), isActive: $isSignUpActive) {
                         Text("Or sign up")
                             .fontWeight(.bold)
                             .padding()

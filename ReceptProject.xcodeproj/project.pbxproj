@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2882DCA92BA46B5500F20EAF /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2882DCA82BA46B5400F20EAF /* SignInView.swift */; };
 		691A14E92BA362BD003DE189 /* MealPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691A14E82BA362BD003DE189 /* MealPlanViewModel.swift */; };
 		691A14F32BA3A357003DE189 /* MealPlanModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 691A14F12BA3A357003DE189 /* MealPlanModel.xcdatamodeld */; };
 		691A14F52BA3A496003DE189 /* MealPlanPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691A14F42BA3A496003DE189 /* MealPlanPersistence.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2882DCA82BA46B5400F20EAF /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		691A14E82BA362BD003DE189 /* MealPlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanViewModel.swift; sourceTree = "<group>"; };
 		691A14F22BA3A357003DE189 /* MealPlanModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MealPlanModel.xcdatamodel; sourceTree = "<group>"; };
 		691A14F42BA3A496003DE189 /* MealPlanPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanPersistence.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				DC8C530A2B9877C200037116 /* NewSearchView.swift */,
 				DCF1426A2B9AFE140075585D /* FilterView.swift */,
 				69E53D7D2B9A60A6000C2AAE /* MealPlanView.swift */,
+				2882DCA82BA46B5400F20EAF /* SignInView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				85C5080F2BA0C97C00EDC1A7 /* Persistence.swift in Sources */,
 				691A14F52BA3A496003DE189 /* MealPlanPersistence.swift in Sources */,
 				85EC92F82B9612BD00045693 /* SearchView.swift in Sources */,
+				2882DCA92BA46B5500F20EAF /* SignInView.swift in Sources */,
 				85EC92FC2B9731E100045693 /* RecipeView.swift in Sources */,
 				DC2347792B9773D500CDFF66 /* ApiService.swift in Sources */,
 				DC8C530D2B987C8D00037116 /* ReceptBasic.swift in Sources */,
