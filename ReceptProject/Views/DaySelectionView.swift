@@ -7,40 +7,53 @@
 
 import SwiftUI
 
-// DaySelectionView.swift
 
 struct DaySelectionView: View {
     @Binding var selectedDate: Date
     let onCancel: () -> Void
     let onSave: () -> Void
     
-    // Dina val för veckodagar
     let daysOfWeek = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"]
     
     var body: some View {
+        
+        
         VStack {
-            // Picker för att välja en dag från listan av veckodagar
-            Picker("Välj dag", selection: $selectedDate) {
+            Text("Select Day For Your Meal Plan")
+                .font(.system(size: 20, weight: .bold))
+                .foregroundStyle(.green)
+                .multilineTextAlignment(.center)
+                .lineSpacing(6.0)
+            
+            Picker("Select Day", selection: $selectedDate) {
                 ForEach(daysOfWeek, id: \.self) { day in
                     Text(day)
                 }
             }
-            .pickerStyle(WheelPickerStyle()) // Använd WheelPickerStyle för en visuell Picker
+            .pickerStyle(WheelPickerStyle())
             
             HStack {
-                Button("Avbryt") {
+                Button("Cancel") {
                     onCancel()
                 }
+                .foregroundColor(.green)
                 .padding()
-                Button("Spara") {
+                .font(.system(size: 20, weight: .bold))
+
+                Spacer()
+                
+                Button("Save") {
                     onSave()
                 }
+                .foregroundColor(.green)
+                .padding()
+                .font(.system(size: 20, weight: .bold))
+
             }
             .padding()
         }
         .padding()
         .cornerRadius(20)
-        .shadow(radius: 2)
     }
 }
 
