@@ -11,7 +11,7 @@ import CoreData
 
 class MealPlanViewModel: ObservableObject {
    
-    @Published var meals: [Meal] = [] // Ändrade namnet på variabeln från recipes till meals
+    @Published var recipes: [Meal] = [] // Ändrade namnet på variabeln från recipes till meals
     var container = MealPlanPersistence.shared.container // Använder MealPlanPersistence-strukturen
     
     init() {
@@ -22,29 +22,29 @@ class MealPlanViewModel: ObservableObject {
         let request = NSFetchRequest<Meal>(entityName: "Meal") // Ändrade från Recept till Meal
 
         do {
-            meals = try container.viewContext.fetch(request)
-            print("Fetch successful. Number of Meals: \(meals.count)")
+            recipes = try container.viewContext.fetch(request)
+            print("Fetch successful. Number of Meals: \(recipes.count)")
         } catch let error as NSError {
             print("Error fetching meals: \(error.localizedDescription)")
         }
     }
    
-    func addMeal(id: Int, title: String, image: String) {
-        if meals.first(where: { $0.id == Int32(id) }) != nil {
+    func addRecipe(id: Int, title: String, image: String) {
+        if recipes.first(where: { $0.id == Int32(id) }) != nil {
             print("Meal already exists. Do not add.")
             return
         }
-        let newMeal = Meal(context: container.viewContext) // Ändrade från Recept till Meal
-        newMeal.id = Int32(id)
-        newMeal.title = title
-        newMeal.image = image
+        let newRecipe = Meal(context: container.viewContext) // Ändrade från Recept till Meal
+        newRecipe.id = Int32(id)
+        newRecipe.title = title
+        newRecipe.image = image
       
         saveData()
         fetchMealPlan()  // Refresh the meals array
     }
     
-    func deleteMealPlan(meal: Meal) { // Ändrade namnet på parameter från recipe till meal
-        container.viewContext.delete(meal) // Ändrade från Recept till Meal
+    func deleteMealPlan(recipe: Meal) { // Ändrade namnet på parameter från recipe till meal
+        container.viewContext.delete(recipe) // Ändrade från Recept till Meal
         saveData()
     }
     

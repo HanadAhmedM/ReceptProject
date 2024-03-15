@@ -76,24 +76,24 @@ struct MealPlanView: View {
                        .padding()
 
                    // List for displaying meal plans
-                   List(viewModel.meals, id: \.self) { meal in // Ändrade från recipes till meals
+                   List(viewModel.recipes, id: \.self) { recipe in // Ändrade från recipes till meals
                        // Encapsulate each item in a VStack and HStack
                        HStack {
-                           AsyncImage(url: URL(string: meal.image ?? ""), scale: 2.5) // Ändrade från recipe till meal
+                           AsyncImage(url: URL(string: recipe.image ?? ""), scale: 2.5) // Ändrade från recipe till meal
                                .cornerRadius(10)
                            
                            VStack(){
                                HStack (){
                                    HStack {
                                        Spacer().frame(width: 25)
-                                       Text(meal.title ?? "Lorem Ipsum") // Ändrade från recipe till meal
+                                       Text(recipe.title ?? "Lorem Ipsum") // Ändrade från recipe till meal
                                            .font(.system(size: 12, weight: .bold))
                                            .foregroundStyle(.green)
                                        Spacer()
                                    }
                                
                                    Button(action: {
-                                       viewModel.deleteMealPlan(meal: meal) // Ändrade från recipe till meal
+                                       viewModel.deleteMealPlan(recipe: recipe)
                                    }) {
                                        Image(systemName: "xmark.circle.fill")
                                            .foregroundColor(Color.red)

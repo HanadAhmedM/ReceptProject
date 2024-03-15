@@ -12,10 +12,13 @@ struct NewSearchView: View {
     
     @ObservedObject var fr = FavoriteViewModel()
     @ObservedObject var mp = MealPlanViewModel()
+    @State private var showFavAlert = false // För favoriter
+      @State private var showPlanAlert = false // För måltidsplan
     @State private var showAlert = false
     @State var searchingKey: String = ""
     @ObservedObject var vm = SearchViewModel()
     @State var items: [String: String] = [:]
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -82,37 +85,75 @@ struct NewSearchView: View {
                                 Spacer()
                                 
                                 // Use separate @State variable for each heart button
-                                Button(action: {
-                                    if fr.recipes.contains(where: { $0.id == recepie.id }) {
-                                        showAlert = true
-                                    } else {
-                                        fr.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
-                                    }
-                                }) {
-                                    Image(systemName: "heart\(fr.recipes.contains(where: { $0.id == recepie.id }) ? ".fill" : "")")
-                                        .foregroundColor(fr.recipes.contains(where: { $0.id == recepie.id }) ? .green : .green)
-                                }
-                                .padding(.trailing, -10)
-                                .alert(isPresented: $showAlert) {
-                                    Alert(
-                                        title: Text("Recipe Already Chosen"),
-                                        message: Text("You have already chosen this recipe."),
-                                        dismissButton: .default(Text("OK"))
-                                    )
-                                }
-
-                                
-                                .padding(.leading, 10) // Justera padding efter behov
-
-                            }
-                        }
-                    }
-                    .frame(width: 300, height: 100, alignment: .leading)
-                }
-            }
-        }
-    }
-}
+                                // Hjärtknapp
+                                             Button(action: {
+                                                 if fr.recipes.contains(where: { $0.id == recepie.id }) {
+                                                     showFavAlert = true
+                                                 } else {
+                                                     fr.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
+                                                 }
+                                             }) {
+                                                 Image(systemName: "heart\(fr.recipes.contains(where: { $0.id == recepie.id }) ? ".fill" : "")")
+                                                     .foregroundColor(fr.recipes.contains(where: { $0.id == recepie.id }) ? .green : .green)
+                                             }
+                                             .padding(.trailing, -5)
+                                             .gesture(
+                                                 TapGesture()
+                                                     .onEnded { _ in
+                                                         if fr.recipes.contains(where: { $0.id == recepie.id }) {
+                                                             showFavAlert = true
+                                                         } else {
+                                                             fr.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
+                                                         }
+                                                     }
+                                             )
+                                             .alert(isPresented: $showFavAlert) {
+                                                 Alert(
+                                                     title: Text("Recipe Already Chosen for Favorites"),
+                                                     message: Text("You have already chosen this recipe for favorites."),
+                                                     dismissButton: .default(Text("OK"))
+                                                 )
+                                             }
+                                             
+                                             // Plusknapp
+                                             Button(action: {
+                                                 if mp.recipes.contains(where: { $0.id == recepie.id }) {
+                                                     showPlanAlert = true
+                                                 } else {
+                                                     mp.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
+                                                 }
+                                             }) {
+                                                 Image(systemName: "plus.circle\(mp.recipes.contains(where: { $0.id == recepie.id }) ? ".fill" : "")")
+                                                     .foregroundColor(mp.recipes.contains(where: { $0.id == recepie.id }) ? .green : .green)
+                                             }
+                                             .padding(.leading, 5)
+                                             .gesture(
+                                                 TapGesture()
+                                                     .onEnded { _ in
+                                                         if mp.recipes.contains(where: { $0.id == recepie.id }) {
+                                                             showPlanAlert = true
+                                                         } else {
+                                                             mp.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
+                                                         }
+                                                     }
+                                             )
+                                             .padding(.trailing, -10)
+                                             .alert(isPresented: $showPlanAlert) {
+                                                 Alert(
+                                                     title: Text("Recipe Already Chosen for Meal Plan"),
+                                                     message: Text("You have already chosen this recipe for meal plan."),
+                                                     dismissButton: .default(Text("OK"))
+                                                 )
+                                             }
+                                         }
+                                     }
+                                 }
+                                 .frame(width: 300, height: 100, alignment: .leading)
+                             }
+                         }
+                     }
+                 }
+             }
 
 struct EdgeBorder: Shape {//idk got it from the internet it fixes so that you can have borders in different places
     var width: CGFloat
