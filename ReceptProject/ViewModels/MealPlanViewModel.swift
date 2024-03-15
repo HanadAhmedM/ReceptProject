@@ -11,15 +11,15 @@ import CoreData
 
 class MealPlanViewModel: ObservableObject {
    
-    @Published var recipes: [Meal] = [] // Ändrade namnet på variabeln från recipes till meals
-    var container = MealPlanPersistence.shared.container // Använder MealPlanPersistence-strukturen
+    @Published var recipes: [Meal] = []
+    var container = MealPlanPersistence.shared.container
     
     init() {
         self.fetchMealPlan()
     }
     
     func fetchMealPlan() {
-        let request = NSFetchRequest<Meal>(entityName: "Meal") // Ändrade från Recept till Meal
+        let request = NSFetchRequest<Meal>(entityName: "Meal")
 
         do {
             recipes = try container.viewContext.fetch(request)
@@ -34,7 +34,7 @@ class MealPlanViewModel: ObservableObject {
             print("Meal already exists. Do not add.")
             return
         }
-        let newRecipe = Meal(context: container.viewContext) // Ändrade från Recept till Meal
+        let newRecipe = Meal(context: container.viewContext)
         newRecipe.id = Int32(id)
         newRecipe.title = title
         newRecipe.image = image
@@ -43,8 +43,8 @@ class MealPlanViewModel: ObservableObject {
         fetchMealPlan()  // Refresh the meals array
     }
     
-    func deleteMealPlan(recipe: Meal) { // Ändrade namnet på parameter från recipe till meal
-        container.viewContext.delete(recipe) // Ändrade från Recept till Meal
+    func deleteMealPlan(recipe: Meal) {
+        container.viewContext.delete(recipe)
         saveData()
     }
     
