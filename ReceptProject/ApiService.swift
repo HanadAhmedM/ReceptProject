@@ -6,7 +6,9 @@
 //
 
 import Foundation
+// Define a class named ApiService
 class ApiService{
+    // Singleton instance
     static let shared = ApiService()
     //Api Keys
     //600587a1ca9e4a99ae2b58baee5958b5         Abdulrahman. Använd den fritt :)
@@ -16,8 +18,10 @@ class ApiService{
     let apiKey = "cdc57e881b61491cb8fc455d7cacc3b2"
     let baseUrl = "https://api.spoonacular.com"
     //https://api.spoonacular.com/recipes/complexSearch?apiKey=600587a1ca9e4a99ae2b58baee5958b5
+    // URLSession for network requests
     let session = URLSession.shared
     
+    // Method to fetch recipes based on provided parameters
     func getRecepies(someItems: [String: String], completion: @escaping ([ReceptBasic]) -> () ){
         let urlToUse = baseUrl + "/recipes/complexSearch?apiKey=" + apiKey
         let task = session.dataTask(with: URL(string: appendQueryItems(items: someItems, aUrl: urlToUse))!){data, response, error in
@@ -38,6 +42,8 @@ class ApiService{
         task.resume()
 
     }
+    
+    // Method to extract basic recipe information from JSON data
     func exrtactReceptBasic(data: Data) -> [ReceptBasic]{
         if let jsonDictionary = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
             if let resultsData = try? JSONSerialization.data(withJSONObject: jsonDictionary["results"]!, options: []){
@@ -47,6 +53,8 @@ class ApiService{
         }
         return[]
     }
+    
+    // Method to fetch a specific recipe by its ID
     func getRecepie(id: Int, completion: @escaping (ReceptFull) -> ()){
         let urlToUse = "\(baseUrl)/recipes/\(id)/information?apiKey=\(apiKey)&includeNutrition=false"
         let task = session.dataTask(with: URL(string: urlToUse)!){data, response, error in
@@ -69,6 +77,8 @@ class ApiService{
         
 
     }
+    
+    // Method to extract detailed recipe information from JSON data
     func extractReceptFull(data: Data) -> ReceptFull{
         var receptFull = ReceptFull()
         if let jsonDictionary = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]{
@@ -184,6 +194,8 @@ class ApiService{
         }
         return receptFull
     }
+    
+    // Method to append query items to a URL string
     public func appendQueryItems(items: [String: String], aUrl: String) -> String{
         var aString = aUrl
         for item in items {
