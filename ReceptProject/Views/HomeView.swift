@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var isGetStartedActive = false
+    @State private var isSignUpActive = false
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -29,53 +32,59 @@ struct HomeView: View {
                         .foregroundColor(.white)
                         .baselineOffset(8)
                 }
-                
                 .frame(width: 250.0)
                 .multilineTextAlignment(.center)
 
-                VStack {
+                VStack(spacing: 20) {
                     Spacer()
                     
-                    NavigationLink(destination: TabBarView()) {
+                    NavigationLink(destination: TabBarView(), isActive: $isGetStartedActive) {
                         Text("Get Started")
                             .fontWeight(.bold)
                             .padding()
                             .frame(width: 350)
                             .font(.subheadline)
-                            .background(Color.green)
-                            .foregroundColor(.white)
+                            .background(isGetStartedActive ? Color.green.opacity(0) : Color.green)
+                            .foregroundColor(isGetStartedActive ? .green : .white)
                             .cornerRadius(20)
-                        
-                        
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.green, lineWidth: 2)
+                                    .opacity(isGetStartedActive ? 1 : 0)
+                            )
                     }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        isGetStartedActive = true
+                    })
                     
-                    //.padding(.bottom, 80) // Adjust button placement
-                    NavigationLink(destination: TabBarView()) {
+                    NavigationLink(destination: TabBarView(), isActive: $isSignUpActive) {
                         Text("Or sign up")
                             .fontWeight(.bold)
                             .padding()
                             .frame(width: 350)
                             .font(.subheadline)
-                            .background(Color.blue)
+                            .background(isSignUpActive ? Color.blue.opacity(0) : Color.blue)
+                            .foregroundColor(isSignUpActive ? .blue : .white)
                             .foregroundColor(.white)
                             .cornerRadius(20)
-                        
-                        
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.blue, lineWidth: 2)
+                                    .opacity(isSignUpActive ? 1 : 0)
+                            )
                     }
                     .padding(.bottom, 80) // Adjust button placement
-                                       
-
+                    .simultaneousGesture(TapGesture().onEnded {
+                        isSignUpActive = true
+                    })
                 }
-                
             }
         }
     }
 }
-
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }
 }
-

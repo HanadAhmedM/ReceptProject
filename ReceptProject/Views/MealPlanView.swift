@@ -11,6 +11,7 @@ struct MealPlanView: View {
     let dateFormatter = DateFormatter()
     let dayFormatter = DateFormatter()
 
+    @StateObject var viewModel = MealPlanViewModel()
     @State private var selectedDay: String? // Holds the selected day
 
     init() {
@@ -21,68 +22,96 @@ struct MealPlanView: View {
 
     var body: some View {
         VStack {
-            // Header with back button and title
+            Text("Meal Plan")
+                .font(.system(size: 25, weight: .bold))
+                .foregroundStyle(.green)
+                .padding(.top, 25)
+                .padding(.bottom, 25)
+                .multilineTextAlignment(.center)
+                .lineSpacing(6.0)
             HStack {
-                Button(action: {
-                    // Action for back navigation
-                }) {
-                    Image(systemName: "chevron.left.circle.fill")
-                        .foregroundColor(Color.green)
-                }
-                Spacer()
-                Text("Meal Plan")
-                    .font(.largeTitle)
-                    .foregroundColor(.green)
-                Spacer()
-            }
-            .padding()
-
-            // Horizontal ScrollView for days of the week buttons
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 20) { // Added spacing between buttons
-                    ForEach(0..<7) { index in
-                        if let dayDate = Calendar.current.date(byAdding: .day, value: index, to: Date()) {
-                            let day = dayFormatter.string(from: dayDate)
-                            let date = dateFormatter.string(from: dayDate)
-                            Button(action: {
-                                selectedDay = day
-                            }) {
-                                VStack {
-                                    Text(day)
-                                        .foregroundColor(Color.green)
-                                        .font(.system(size: 18, weight: .bold))
-                                    Text(date)
-                                        .foregroundColor(Color.green)
-                                        .padding()
-                                        .background(Color.white)
-                                        .font(.system(size: 18, weight: .bold))
-                                        .frame(width: 70, height: 50)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 30)
-                                                .stroke(Color.green, lineWidth: 2)
-                                        )
+                // Horizontal ScrollView for days of the week buttons
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 20) { // Added spacing between buttons
+                        ForEach(0..<7) { index in
+                            if let dayDate = Calendar.current.date(byAdding: .day, value: index, to: Date()) {
+                                let day = dayFormatter.string(from: dayDate)
+                                let date = dateFormatter.string(from: dayDate)
+                                Button(action: {
+                                    selectedDay = day
+                                }) {
+                                    VStack {
+                                        Text(day)
+                                            .foregroundColor(.green)
+                                            .font(.system(size: 18, weight: .bold))
+                                        Text(date)
+                                            .foregroundColor(selectedDay == day ? .white : .green)
+                                            .font(.system(size: 18, weight: .bold))
+                                            .frame(width: 65, height: 40)
+                                            .background(selectedDay == day ? Color.green : Color.clear)
+                                            .clipShape(RoundedRectangle(cornerRadius: 30))
+                                            .overlay(
+                                                RoundedRectangle(cornerRadius: 30)
+                                                    .stroke(selectedDay == day ? Color.green : Color.clear, lineWidth: 2)
+                                            )
+                                            .background(
+                                                RoundedRectangle(cornerRadius: 30)
+                                                    .stroke(Color.green, lineWidth: 2)
+                                                    .opacity(selectedDay == day ? 0 : 1) // Hides the stroke when button is selected
+                                            )
+                                    }
                                 }
+
                             }
                         }
                     }
-                }
-                .padding()
-            }
-
-            // Section for meal planning based on the selected day
-            if let day = selectedDay {
-                Text("Plan meals for \(day)")
-                    .font(.title)
-                    .foregroundColor(Color.green)
                     .padding()
+                }
             }
+            // Section for meal planning based on the selected day
+               if let day = selectedDay {
+                   Text("Plan meals for \(day)")
+                       .font(.title)
+                       .foregroundColor(Color.green)
+                       .padding()
 
-            Spacer()
-        }
-        .padding()
-    }
-}
-
+                   // List for displaying meal plans
+                   List(viewModel.recipes, id: \.self) { recipe in // Ändrade från recipes till meals
+                       // Encapsulate each item in a VStack and HStack
+                       HStack {
+                           AsyncImage(url: URL(string: recipe.image ?? ""), scale: 2.5) // Ändrade från recipe till meal
+                               .cornerRadius(10)
+                           
+                           VStack(){
+                               HStack (){
+                                   HStack {
+                                       Spacer().frame(width: 25)
+                                       Text(recipe.title ?? "Lorem Ipsum") // Ändrade från recipe till meal
+                                           .font(.system(size: 12, weight: .bold))
+                                           .foregroundStyle(.green)
+                                       Spacer()
+                                   }
+                               
+                                   Button(action: {
+                                       viewModel.deleteMealPlan(recipe: recipe)
+                                   }) {
+                                       Image(systemName: "xmark.circle.fill")
+                                           .foregroundColor(Color.red)
+                                           .padding()
+                                   }
+                                   .padding(.trailing, -10)
+                               }
+                           }
+                       }
+                       .frame(width: 300, height: 100, alignment: .leading)
+                   }
+               }
+               
+               Spacer()
+           }
+           .padding()
+       }
+   }
 
 #Preview {
     MealPlanView()

@@ -9,18 +9,28 @@ import SwiftUI
 
 struct NewSearchView: View {
     
+    
     @ObservedObject var fr = FavoriteViewModel()
+    @ObservedObject var mp = MealPlanViewModel()
+    @State private var showFavAlert = false // För favoriter
+      @State private var showPlanAlert = false // För måltidsplan
     @State private var showAlert = false
     @State var searchingKey: String = ""
     @ObservedObject var vm = SearchViewModel()
     @State var items: [String: String] = [:]
+    
     var body: some View {
         NavigationView{
             VStack{
-                Text("Let's Cook something delicious")
-                    .font(.largeTitle)
+                Text("Let's Cook\nsomething delicious")
+                    .font(.system(size: 25, weight: .bold))
                     .foregroundStyle(.green)
-                HStack{
+                    .padding(.top, 25)
+                    .padding(.bottom, 25)              
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(6.0)
+                HStack {
+                    Spacer()
                     TextField("Search recipe...", text: $searchingKey)
                         .background(Color.white)
                         .foregroundColor(Color(hex: 0xBFBFBF))
@@ -34,83 +44,116 @@ struct NewSearchView: View {
                         print(items)
                     }, label: {
                         Image(systemName: "magnifyingglass")
-                            .resizable()
                             .frame(width: 10, height: 10)
                             .padding()
                             .background(.gray)
                             .foregroundStyle(.white)
                             .cornerRadius(8.0)
+                            .foregroundColor(searchingKey.isEmpty ? .gray : .white) // Change color based on condition
                     })
+                    .padding(.trailing, -10)
+
                     NavigationLink(destination: {
                         FilterView(items: $items)
                     }, label: {
                         Image(systemName: "line.horizontal.3.decrease.circle")
-                            .resizable()
                             .frame(width: 10, height: 10)
-                            .foregroundColor(.white)
                             .padding()
                             .background(Color.green)
                             .cornerRadius(8.0)
+                            .foregroundColor(.white)
                             .padding()
                     })
                 }
+
                 
-                ScrollView(content: {
-                    VStack(alignment: .leading){
-                        ForEach(vm.currentRecepies){recepie in
-                            HStack(){
-                                AsyncImage(url: URL(string: recepie.image), scale: 2)
-                                        //.background(.green)
-                                        //.border(width: 3, edges: [.trailing], color: Color.green)
-                                    .cornerRadius(10)
-                                        .onTapGesture {
-                                            
-                                        }
-                                VStack(){
-                                    HStack(){
-                                        Spacer()
-                                        Button(action: {
-                                            if fr.recipes.contains(where: { $0.id == recepie.id }) {
-                                                showAlert = true
-                                            } else {
-                                                fr.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
-                                            }
-                                        }) {
-                                            Image(systemName: "heart")
-                                                .foregroundStyle(.green)
-                                                .cornerRadius(8.0)
-                                        }
-                                        .alert(isPresented: $showAlert) {
-                                            Alert(
-                                                title: Text("Recipe Already Chosen"),
-                                                message: Text("You have already chosen this recipe."),
-                                                dismissButton: .default(Text("OK"))
-                                            )
-                                        }
-                                        
-                                        
-                                    }
-                                    .padding(10)
-                                    Text(recepie.title)
-                                    Spacer()
-                                }
+                List(vm.currentRecepies, id: \.id) { recepie in
+                    HStack {
+                        AsyncImage(url: URL(string: recepie.image), scale: 2.5)
+                            .cornerRadius(10)
+                            .onTapGesture {
+                                // Handle tap on recipe image if needed
                             }
-                            .frame(width: 350, height: 120, alignment: .center)
-                            //.border(width: 1, edges: [.top, .bottom, .trailing, .leading], color: .gray)
-                            .padding([.bottom], 20)
-                            
-                            
-                            
-                           
-                        }
                         
-                    }
-                })
-                    
-            }
-        }
-    }
-}
+                        VStack {
+                            HStack {
+                                Spacer().frame(width: 25) // Fixed width for consistent spacing
+                                Text(recepie.title)
+                                    .font(.system(size: 12, weight: .bold))
+                                    .foregroundStyle(.green)
+                                    .padding(.trailing, 18) // Adjust padding here
+                                Spacer()
+                                
+                                // Use separate @State variable for each heart button
+                                // Hjärtknapp
+                                             Button(action: {
+                                                 if fr.recipes.contains(where: { $0.id == recepie.id }) {
+                                                     showFavAlert = true
+                                                 } else {
+                                                     fr.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
+                                                 }
+                                             }) {
+                                                 Image(systemName: "heart\(fr.recipes.contains(where: { $0.id == recepie.id }) ? ".fill" : "")")
+                                                     .foregroundColor(fr.recipes.contains(where: { $0.id == recepie.id }) ? .green : .green)
+                                             }
+                                             .padding(.trailing, -5)
+                                             .gesture(
+                                                 TapGesture()
+                                                     .onEnded { _ in
+                                                         if fr.recipes.contains(where: { $0.id == recepie.id }) {
+                                                             showFavAlert = true
+                                                         } else {
+                                                             fr.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
+                                                         }
+                                                     }
+                                             )
+                                             .alert(isPresented: $showFavAlert) {
+                                                 Alert(
+                                                     title: Text("Recipe Already Chosen for Favorites"),
+                                                     message: Text("You have already chosen this recipe for favorites."),
+                                                     dismissButton: .default(Text("OK"))
+                                                 )
+                                             }
+                                             
+                                             // Plusknapp
+                                             Button(action: {
+                                                 if mp.recipes.contains(where: { $0.id == recepie.id }) {
+                                                     showPlanAlert = true
+                                                 } else {
+                                                     mp.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
+                                                 }
+                                             }) {
+                                                 Image(systemName: "plus.circle\(mp.recipes.contains(where: { $0.id == recepie.id }) ? ".fill" : "")")
+                                                     .foregroundColor(mp.recipes.contains(where: { $0.id == recepie.id }) ? .green : .green)
+                                             }
+                                             .padding(.leading, 5)
+                                             .gesture(
+                                                 TapGesture()
+                                                     .onEnded { _ in
+                                                         if mp.recipes.contains(where: { $0.id == recepie.id }) {
+                                                             showPlanAlert = true
+                                                         } else {
+                                                             mp.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
+                                                         }
+                                                     }
+                                             )
+                                             .padding(.trailing, -10)
+                                             .alert(isPresented: $showPlanAlert) {
+                                                 Alert(
+                                                     title: Text("Recipe Already Chosen for Meal Plan"),
+                                                     message: Text("You have already chosen this recipe for meal plan."),
+                                                     dismissButton: .default(Text("OK"))
+                                                 )
+                                             }
+                                         }
+                                     }
+                                 }
+                                 .frame(width: 300, height: 100, alignment: .leading)
+                             }
+                         }
+                     }
+                 }
+             }
 
 struct EdgeBorder: Shape {//idk got it from the internet it fixes so that you can have borders in different places
     var width: CGFloat
