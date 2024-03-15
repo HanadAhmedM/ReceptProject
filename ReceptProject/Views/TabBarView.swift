@@ -19,33 +19,35 @@ struct TabBarView: View {
     @State private var selectedTab = 0
 
     // Array to hold the tabs
+   
     let tabs: [Tab] = [
         Tab(view: AnyView(NewSearchView()), icon: "magnifyingglass", text: "Search"),
         Tab(view: AnyView(FavoriteRecipesView()), icon: "heart", text: "Favorite"),
         Tab(view: AnyView(MealPlanView()), icon: "calendar", text: "Meal Plan")
     ]
+
+
     
     // Constant range for the ForEach loop
-    let tabIndices = Array(0..<3)
+   let tabIndices = Array(0..<3)
 
     var body: some View {
-        // TabView to display the tabs
-        TabView(selection: $selectedTab) {
-            // Loop through each tab
-            ForEach(tabIndices, id: \.self) { index in
-                // Display the view associated with the tab
-                tabs[index].view
-                    // Define tab item with icon and text
-                    .tabItem {
-                        Image(systemName: tabs[index].icon) 
-                        Text(tabs[index].text)
-                    }
-                    .tag(index)
-            }
-        }
-        .accentColor(Color.green)
-    }
-}
+           // TabView to display the tabs
+           TabView(selection: $selectedTab) {
+               // Loop through each tab
+               ForEach(tabs.indices, id: \.self) { index in
+                   tabs[index].view
+                       .tabItem {
+                           Image(systemName: tabs[index].icon)
+                           Text(tabs[index].text)
+                       }
+                       .tag(index)
+               }
+
+           }
+           .accentColor(Color.green)
+       }
+   }
 
 #Preview {
     TabBarView()

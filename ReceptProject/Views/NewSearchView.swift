@@ -9,9 +9,11 @@ import SwiftUI
 
 struct NewSearchView: View {
     
-    
+    // Observed objects for favorite and meal plan view models
     @ObservedObject var fr = FavoriteViewModel()
     @ObservedObject var mp = MealPlanViewModel()
+    
+    // State variables for handling alerts and user inputs
     @State private var showFavAlert = false
     @State private var showPlanAlert = false
     @State private var showAlert = false
@@ -24,6 +26,7 @@ struct NewSearchView: View {
     var body: some View {
         NavigationView{
             VStack{
+                // Title
                 Text("Let's Cook\nsomething delicious")
                     .font(.system(size: 25, weight: .bold))
                     .foregroundStyle(.green)
@@ -31,6 +34,7 @@ struct NewSearchView: View {
                     .padding(.bottom, 25)
                     .multilineTextAlignment(.center)
                     .lineSpacing(6.0)
+                // Search bar and filter button
                 HStack {
                     Spacer()
                     TextField("Search recipe...", text: $searchingKey)
@@ -68,9 +72,10 @@ struct NewSearchView: View {
                     })
                 }
                 
-                
+                // Recipe list
                 List(vm.currentRecepies, id: \.id) { recepie in
                     HStack {
+                        // Recipe image
                         AsyncImage(url: URL(string: recepie.image), scale: 2.5)
                             .cornerRadius(10)
                             .onTapGesture {
@@ -80,6 +85,7 @@ struct NewSearchView: View {
                         VStack {
                             HStack {
                                 Spacer().frame(width: 25) // Fixed width for consistent spacing
+                                // Recipe title
                                 Text(recepie.title)
                                     .font(.system(size: 12, weight: .bold))
                                     .foregroundStyle(.green)
@@ -185,6 +191,7 @@ struct EdgeBorder: Shape {//idk got it from the internet it fixes so that you ca
     }
 }
 
+// View extension for applying borders to specified edges
 extension View {//idk got it from the internet it fixes so that you can have borders in different places
     func border(width: CGFloat, edges: [Edge], color: Color) -> some View {
         overlay(EdgeBorder(width: width, edges: edges).foregroundColor(color))

@@ -6,6 +6,8 @@
 //
 
 import Foundation
+
+// Struct representing basic information about a recipe
 struct ReceptBasic: Codable, Identifiable{
     var id: Int
     var title: String

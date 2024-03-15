@@ -6,28 +6,38 @@
 //
 
 import Foundation
+
+// Struct representing an ingredient used in a recipe
 struct Ingredient{
-    var id: Int = 0
-    var name: String = ""
-    var localizedName: String = ""
-    var image: String = ""
+    var id: Int = 0 // Unique identifier
+    var name: String = "" // Name of the ingredient
+    var localizedName: String = "" // Localized name of the ingredient
+    var image: String = "" // Image URL representing the ingredient
 }
+
+// Struct representing equipment used in a recipe
 struct Equipment{
     var id: Int = 0
     var name: String = ""
     var localizedName: String = ""
     var image: String = ""
 }
+
+// Struct representing a step in the recipe preparation process
 struct Step{
     var number: Int = 0
     var step: String = ""
     var ingredients: [Ingredient] = []
     var equipment: [Equipment] = []
 }
+
+// Struct representing an analyzed instruction for preparing a recipe
 struct AnalyzedInstruction{
     var name: String = ""
     var steps: [Step] = []
 }
+
+// Struct representing a full recipe
 struct ReceptFull{
     var id: Int = 0
     var title: String = ""
@@ -70,6 +80,7 @@ struct ReceptFull{
     
 }
 
+// Struct representing an extended ingredient used in a recipe
 struct extendedIngredient{
     var aisle: String = ""
     var amount: Double = 0.0
@@ -82,10 +93,14 @@ struct extendedIngredient{
     var meta: [String] = []
     var measures: Measures?
 }
+
+// Struct representing measures for an ingredient
 struct Measures{
     var us: Measure?
     var metric: Measure?
 }
+
+// Struct representing a measure for an ingredient
 struct Measure: Decodable{
     var amount: Double = 0.0
     var unitShort: String = ""
