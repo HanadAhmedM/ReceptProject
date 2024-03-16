@@ -76,12 +76,13 @@ struct NewSearchView: View {
                 List(vm.currentRecepies, id: \.id) { recepie in
                     HStack {
                         // Recipe image
-                        AsyncImage(url: URL(string: recepie.image), scale: 2.5)
-                            .cornerRadius(10)
-                            .onTapGesture {
-                                // Handle tap on recipe image if needed
-                            }
-                        
+                        NavigationLink(destination: {
+                            RecipeView(id: recepie.id)
+                        }, label: {
+                            AsyncImage(url: URL(string: recepie.image), scale: 2.5)
+                                .cornerRadius(10)
+                        })
+
                         VStack {
                             HStack {
                                 Spacer().frame(width: 25) // Fixed width for consistent spacing

@@ -85,6 +85,8 @@ struct extendedIngredient{
     var aisle: String = ""
     var amount: Double = 0.0
     var consistency: String = ""
+    var image: String = ""
+    var id: Int = 0
     var name: String = ""
     var nameClean: String = ""
     var original: String = ""
