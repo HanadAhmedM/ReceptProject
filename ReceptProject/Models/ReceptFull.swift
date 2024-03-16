@@ -29,7 +29,7 @@ struct AnalyzedInstruction{
     var steps: [Step] = []
 }
 struct ReceptFull{
-    var id: Int = 0
+    var id: Int = -2
     var title: String = ""
     var image: String = ""
     var imageType: String = ""
@@ -74,6 +74,8 @@ struct extendedIngredient{
     var aisle: String = ""
     var amount: Double = 0.0
     var consistency: String = ""
+    var image: String = ""
+    var id: Int = 0
     var name: String = ""
     var nameClean: String = ""
     var original: String = ""

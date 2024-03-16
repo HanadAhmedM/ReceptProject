@@ -66,12 +66,13 @@ struct NewSearchView: View {
                 
                 List(vm.currentRecepies, id: \.id) { recepie in
                     HStack {
-                        AsyncImage(url: URL(string: recepie.image), scale: 2.5)
-                            .cornerRadius(10)
-                            .onTapGesture {
-                                // Handle tap on recipe image if needed
-                            }
-                        
+                        NavigationLink(destination: {
+                            RecipeView(id: recepie.id)
+                        }, label: {
+                            AsyncImage(url: URL(string: recepie.image), scale: 2.5)
+                                .cornerRadius(10)
+                        })
+                                                    
                         VStack {
                             HStack {
                                 Spacer().frame(width: 25) // Fixed width for consistent spacing
@@ -81,7 +82,7 @@ struct NewSearchView: View {
                                     .padding(.trailing, 18) // Adjust padding here
                                 Spacer()
                                 
-                                // Use separate @State variable for each heart button
+//                                 Use separate @State variable for each heart button
                                 Button(action: {
                                     if fr.recipes.contains(where: { $0.id == recepie.id }) {
                                         showAlert = true

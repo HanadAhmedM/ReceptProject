@@ -4,57 +4,142 @@
 //
 //  Created by Hanad.Ahmed on 2024-03-05.
 //
-
+import WebKit
 import SwiftUI
 
 struct RecipeView: View {
+    @State var recept: ReceptFull = ReceptFull()
+    var id: Int
+    @State var changer = ""
+//    @State var timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
+    var body: some View {
+        ZStack{
+            Text(changer)
+                .foregroundStyle(.clear)
+            ScrollView(showsIndicators: false){
+                VStack{
+                    Text(recept.title)
+                        .font(.largeTitle)
+                        .foregroundStyle(.green)
+                    AsyncImage(url: URL(string: recept.image))
+                    HStack{
+                        VStack{
+                            Image(systemName: "dollarsign.circle.fill")
+                                .foregroundStyle(.orange)
+                            Text("$\(twoDeci(double: recept.pricePerServing))")
+                        }
+                        VStack{
+                            Image(systemName: "heart.fill")
+                                .foregroundStyle(.red)
+                            Text("\(recept.aggregateLikes) likes")
+                        }
+                        VStack{
+                            Image(systemName: "clock.fill")
+                                .foregroundStyle(.purple)
+                            Text("ready in \(recept.readyInMinutes)")
+                        }
+                        VStack{
+                            Image(systemName: "speedometer")
+                                .foregroundStyle(.yellow)
+                            Text("spoonacular \nScore: \(twoDeci(double: recept.spoonacularScore))")
+                        }
+                    }
+                    
+                    Text(htmlToPlainText(htmlString: recept.summary))
+                        .onTapGesture {
+                            print(recept.summary)
+                        }
+                        .background(.yellow)
+                        .padding(8)
+                        .background(.green)
+                    IngredientsView(ingredients: recept.extendedIngredients)
+                    Text(htmlToPlainText(htmlString: recept.instructions))
+                        .onTapGesture {
+                            print(recept.summary)
+                        }
+                        .background(.yellow)
+                        .padding(8)
+                        .background(.green)
+
+
+                    Spacer()
+                        .frame(height: 300)
+
+                }
+                .frame(width: 393)
+            }
+//            .onReceive(timer, perform: { _ in
+//                print(recept.id)
+//                changer += "t"
+//            })
+            .onAppear(perform: {
+                print(id)
+                ApiService.shared.getRecepie(id: self.id, completion: {recept in
+                    self.recept = recept
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05){
+                        changer = "dawg"
+                        
+                    }
+                        
+                    
+                         
+
+                })
+                
+            })
+        }
+        
+    }
+    func getRecept(){
+        ApiService.shared.getRecepie(id: self.id, completion: {recept in
+            self.recept = recept
+        })
+    }
+    func twoDeci(double: Double) -> String{
+        return String(format: "%.2f", double)
+    }
+    func htmlToPlainText(htmlString: String) -> String {
+        guard let data = htmlString.data(using: .utf8) else {
+            return htmlString
+        }
+        
+        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.html,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ]
+        
+        guard let attributedString = try? NSAttributedString(data: data, options: options, documentAttributes: nil) else {
+            return htmlString
+        }
+        
+        return attributedString.string
+    }
+}
+struct IngredientsView: View {
+    @State var showIng = false
+    var ingredients: [extendedIngredient]
     var body: some View {
         VStack{
-               HStack(spacing: 20) {
-                       Image(systemName: "chevron.left.circle")
-                           .foregroundColor(Color.green)
-                           .frame(alignment: .leading)
-                       Text("Recipie")
-                       .font(.largeTitle)
-                           .foregroundColor(.green)
-                           .frame(alignment: .center)
-                   
-                   }
-               VStack(spacing: 10){
-                   Image("1")
-                       .resizable()
-                       .cornerRadius(25)
-                       .frame(width: 430,height: 291)
-                   Text("Ice Cream").bold()
-                       .font(.title)
-                       .foregroundColor(Color.green)
-                       .frame(alignment: .leadingFirstTextBaseline)
-                   Text("Dolor sit ipsum, dolor sit ipsum  ipsum dolor sit. Ipsum dolor sit.  ipsum dolor sit. Ipsum dolor sit.  ipsum dolor sit. Ipsum dolor sit.").foregroundColor(.secondary)
-                       .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-                   
-                   
-                  
-                       }
-               Text("Ingredients").font(.title2)    .font(.title2)
-                   .foregroundColor(Color.green)
-                   .frame(maxWidth: .infinity, alignment: .leading)
-               List(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
-                   HStack{
-                       
-                            Image(systemName: "checkmark.circle.fill")
-                                    .foregroundColor(Color.green)  // Set the foreground color of the heart to green
-                                 
-                        Text("Dolor sit ipsum").foregroundColor(.secondary)
-                   }
-                
-                  
-                } .listStyle(PlainListStyle())
-               }
-           }
-       
-          
-           }
-
+            HStack{
+                Spacer()
+                Text("Ingredients")
+                Image(systemName: showIng ? "chevron.up" : "chevron.down")
+                Spacer()
+            }
+            .padding()
+            .background(.green)
+            .border(width: 3, edges: [.top, .bottom], color: .black)
+            .onTapGesture {
+                showIng.toggle()
+            }
+            if showIng{
+                ForEach(ingredients, id: \.name){ingredient in
+                    IngredientView(ingredient: ingredient)
+                }
+            }
+        }
+    }
+}
 #Preview {
-    RecipeView()
+    RecipeView(id: 664959)
 }
