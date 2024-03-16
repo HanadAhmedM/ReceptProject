@@ -83,24 +83,24 @@ struct NewSearchView: View {
                                 Spacer()
                                 
 //                                 Use separate @State variable for each heart button
-                                Button(action: {
-                                    if fr.recipes.contains(where: { $0.id == recepie.id }) {
-                                        showAlert = true
-                                    } else {
-                                        fr.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
-                                    }
-                                }) {
-                                    Image(systemName: "heart\(fr.recipes.contains(where: { $0.id == recepie.id }) ? ".fill" : "")")
-                                        .foregroundColor(fr.recipes.contains(where: { $0.id == recepie.id }) ? .green : .green)
-                                }
-                                .padding(.trailing, -10)
-                                .alert(isPresented: $showAlert) {
-                                    Alert(
-                                        title: Text("Recipe Already Chosen"),
-                                        message: Text("You have already chosen this recipe."),
-                                        dismissButton: .default(Text("OK"))
-                                    )
-                                }
+//                                Button(action: {
+//                                    if fr.recipes.contains(where: { $0.id == recepie.id }) {
+//                                        showAlert = true
+//                                    } else {
+//                                        fr.addRecipe(id: recepie.id, title: recepie.title, image: recepie.image)
+//                                    }
+//                                }) {
+//                                    Image(systemName: "heart\(fr.recipes.contains(where: { $0.id == recepie.id }) ? ".fill" : "")")
+//                                        .foregroundColor(fr.recipes.contains(where: { $0.id == recepie.id }) ? .green : .green)
+//                                }
+//                                .padding(.trailing, -10)
+//                                .alert(isPresented: $showAlert) {
+//                                    Alert(
+//                                        title: Text("Recipe Already Chosen"),
+//                                        message: Text("You have already chosen this recipe."),
+//                                        dismissButton: .default(Text("OK"))
+//                                    )
+//                                }
                             }
                         }
                     }

@@ -11,7 +11,6 @@ struct RecipeView: View {
     @State var recept: ReceptFull = ReceptFull()
     var id: Int
     @State var changer = ""
-//    @State var timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
     var body: some View {
         ZStack{
             Text(changer)
@@ -63,28 +62,20 @@ struct RecipeView: View {
 
 
                     Spacer()
-                        .frame(height: 300)
+                        .frame(height: 100)
 
                 }
                 .frame(width: 393)
             }
-//            .onReceive(timer, perform: { _ in
-//                print(recept.id)
-//                changer += "t"
-//            })
             .onAppear(perform: {
                 print(id)
-                ApiService.shared.getRecepie(id: self.id, completion: {recept in
-                    self.recept = recept
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05){
-                        changer = "dawg"
-                        
-                    }
-                        
-                    
-                         
-
-                })
+//                ApiService.shared.getRecepie(id: self.id, completion: {recept in
+//                    self.recept = recept
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05){//p.ga syncnings problem behövde jag
+//                        changer = "uIUpdgggate"
+//                        
+//                    }
+//                })
                 
             })
         }
@@ -95,10 +86,10 @@ struct RecipeView: View {
             self.recept = recept
         })
     }
-    func twoDeci(double: Double) -> String{
+    func twoDeci(double: Double) -> String{// because the doubles in recept had too many 
         return String(format: "%.2f", double)
     }
-    func htmlToPlainText(htmlString: String) -> String {
+    func htmlToPlainText(htmlString: String) -> String {//From the internet, quick fix to that summary and instructions are Html text(I think) so they had charachters like: <> in the text. With this the charachters go away but no effect of these charachters are acheived for some reason. like making som part of the text bold
         guard let data = htmlString.data(using: .utf8) else {
             return htmlString
         }
@@ -116,7 +107,7 @@ struct RecipeView: View {
     }
 }
 struct IngredientsView: View {
-    @State var showIng = false
+    @State var showIng = false//variablen som bästemmer om ingrediencerna ska visas eller inte
     var ingredients: [extendedIngredient]
     var body: some View {
         VStack{

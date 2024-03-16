@@ -187,7 +187,7 @@ class ApiService{
         }
         return receptFull
     }
-    public func appendQueryItems(items: [String: String], aUrl: String) -> String{
+    public func appendQueryItems(items: [String: String], aUrl: String) -> String{//appends query items inte the main url
         var aString = aUrl
         for item in items {
             aString.append("&" + item.key + "=" + item.value)
