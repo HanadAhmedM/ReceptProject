@@ -94,6 +94,8 @@ class ApiService{
                     extendedIngredient.originalName = ingredient["originalName"] as? String ?? ""
                     extendedIngredient.unit = ingredient["name"] as? String ?? ""
                     extendedIngredient.meta = ingredient["meta"] as? [String] ?? []
+                    extendedIngredient.image = ingredient["image"] as? String ?? ""
+                    extendedIngredient.id = ingredient["id"] as? Int ?? 0
                     if let measures = ingredient["measures"] as? [String: Any]{
                         var theMeasures = Measures()
                         var theUs = Measure()

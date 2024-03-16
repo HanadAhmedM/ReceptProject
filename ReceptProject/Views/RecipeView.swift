@@ -75,7 +75,6 @@ struct RecipeView: View {
                 .frame(width: 393)
             }
             .onAppear(perform: {
-                print(id)
                 ApiService.shared.getRecepie(id: self.id, completion: {recept in
                     self.recept = recept
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.05){//p.ga syncnings problem behövde jag
@@ -130,9 +129,8 @@ struct IngredientsView: View {
             .onTapGesture {
                 showIng.toggle()
             }
-            if showIng{
-                ForEach(ingredients, id: \.name){ingredient in
-                    IngredientView(ingredient: ingredient)
+            if showIng{//shows every ingredient
+                ForEach(ingredients, id: \.name){ingredient in                    IngredientView(ingredient: ingredient)
                 }
             }
         }
