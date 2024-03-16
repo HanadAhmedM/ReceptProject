@@ -25,7 +25,11 @@
 		DC8C530B2B9877C200037116 /* NewSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C530A2B9877C200037116 /* NewSearchView.swift */; };
 		DC8C530D2B987C8D00037116 /* ReceptBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C530C2B987C8D00037116 /* ReceptBasic.swift */; };
 		DCF1426B2B9AFE140075585D /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1426A2B9AFE140075585D /* FilterView.swift */; };
+<<<<<<< Updated upstream
 		DCF1426D2BA4C9E90075585D /* ingredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1426C2BA4C9E90075585D /* ingredientView.swift */; };
+=======
+		DCF1426F2BA5D3E30075585D /* IngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1426E2BA5D3E30075585D /* IngredientView.swift */; };
+>>>>>>> Stashed changes
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +52,11 @@
 		DC8C530A2B9877C200037116 /* NewSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSearchView.swift; sourceTree = "<group>"; };
 		DC8C530C2B987C8D00037116 /* ReceptBasic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceptBasic.swift; sourceTree = "<group>"; };
 		DCF1426A2B9AFE140075585D /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		DCF1426C2BA4C9E90075585D /* ingredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ingredientView.swift; sourceTree = "<group>"; };
+=======
+		DCF1426E2BA5D3E30075585D /* IngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientView.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +81,13 @@
 				DC8C530A2B9877C200037116 /* NewSearchView.swift */,
 				DCF1426A2B9AFE140075585D /* FilterView.swift */,
 				69E53D7D2B9A60A6000C2AAE /* MealPlanView.swift */,
+<<<<<<< Updated upstream
 				DCF1426C2BA4C9E90075585D /* ingredientView.swift */,
+=======
+				2882DCA82BA46B5400F20EAF /* SignInView.swift */,
+				691A14FA2BA3DCB3003DE189 /* DaySelectionView.swift */,
+				DCF1426E2BA5D3E30075585D /* IngredientView.swift */,
+>>>>>>> Stashed changes
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,6 +227,11 @@
 				DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */,
 				DCF1426B2B9AFE140075585D /* FilterView.swift in Sources */,
 				69C4F1552B97AF0E000D4225 /* TabBarView.swift in Sources */,
+<<<<<<< Updated upstream
+=======
+				DCF1426F2BA5D3E30075585D /* IngredientView.swift in Sources */,
+				691A14FB2BA3DCB3003DE189 /* DaySelectionView.swift in Sources */,
+>>>>>>> Stashed changes
 				69C4F1552B97AF0E000D4225 /* TabBarView.swift in Sources */,
 				85C508112BA0C9AD00EDC1A7 /* FavoriteViewModel.swift in Sources */,
 				DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */,

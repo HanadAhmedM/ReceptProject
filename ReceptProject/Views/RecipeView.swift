@@ -69,13 +69,13 @@ struct RecipeView: View {
             }
             .onAppear(perform: {
                 print(id)
-//                ApiService.shared.getRecepie(id: self.id, completion: {recept in
-//                    self.recept = recept
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05){//p.ga syncnings problem behövde jag
-//                        changer = "uIUpdgggate"
-//                        
-//                    }
-//                })
+                ApiService.shared.getRecepie(id: self.id, completion: {recept in
+                    self.recept = recept
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05){//p.ga syncnings problem behövde jag
+                        changer = "uIUpdgggate"
+                        
+                    }
+                })
                 
             })
         }
