@@ -15,6 +15,8 @@ class SearchViewModel: ObservableObject{
     // Published property to hold a single ReceptFull object
     @Published var currentRecepie: ReceptFull = ReceptFull()
     
+    @Published var changer: String = "" //a text to change so that the view gets updated
+    
     // Method to fetch recipes based on provided parameters
     func getRecepies(theItems: [String: String]){
         ApiService.shared.getRecepies(someItems: theItems, completion: { recepies in

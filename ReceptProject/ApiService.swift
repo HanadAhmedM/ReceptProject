@@ -74,8 +74,7 @@ class ApiService{
 //            }
         }
         task.resume()
-        
-
+    
     }
     
     // Method to extract detailed recipe information from JSON data

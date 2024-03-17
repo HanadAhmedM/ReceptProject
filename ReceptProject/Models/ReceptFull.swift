@@ -8,103 +8,176 @@
 import Foundation
 
 // Struct representing an ingredient used in a recipe
-struct Ingredient{
-    var id: Int = 0 // Unique identifier
-    var name: String = "" // Name of the ingredient
-    var localizedName: String = "" // Localized name of the ingredient
-    var image: String = "" // Image URL representing the ingredient
+class Ingredient: Observable{
+    @Published var id: Int = 0 // Unique identifier
+    @Published var name: String = "" // Name of the ingredient
+    @Published var localizedName: String = "" // Localized name of the ingredient
+    @Published var image: String = "" // Image URL representing the ingredient
+    
+    init(){
+        
+    }
+    init(id: Int, name: String, localizedName: String, image: String) {
+        self.id = id
+        self.name = name
+        self.localizedName = localizedName
+        self.image = image
+    }
 }
 
 // Struct representing equipment used in a recipe
-struct Equipment{
-    var id: Int = 0
-    var name: String = ""
-    var localizedName: String = ""
-    var image: String = ""
+class Equipment: Observable{
+    @Published var id: Int = 0
+    @Published var name: String = ""
+    @Published var localizedName: String = ""
+    @Published var image: String = ""
+    
+    init(){
+        
+    }
+    init(id: Int, name: String, localizedName: String, image: String) {
+        self.id = id
+        self.name = name
+        self.localizedName = localizedName
+        self.image = image
+    }
 }
 
 // Struct representing a step in the recipe preparation process
-struct Step{
-    var number: Int = 0
-    var step: String = ""
-    var ingredients: [Ingredient] = []
-    var equipment: [Equipment] = []
+class Step: Observable{
+    @Published var number: Int = 0
+    @Published var step: String = ""
+    @Published var ingredients: [Ingredient] = []
+    @Published var equipment: [Equipment] = []
+    
+    init(){
+        
+    }
+    init(number: Int, step: String, ingredients: [Ingredient], equipment: [Equipment]) {
+        self.number = number
+        self.step = step
+        self.ingredients = ingredients
+        self.equipment = equipment
+    }
 }
 
 // Struct representing an analyzed instruction for preparing a recipe
-struct AnalyzedInstruction{
-    var name: String = ""
-    var steps: [Step] = []
+class AnalyzedInstruction: Observable{
+    @Published var name: String = ""
+    @Published var steps: [Step] = []
+    
+    init(){
+        
+    }
+    init(name: String, steps: [Step]) {
+        self.name = name
+        self.steps = steps
+    }
 }
 
 // Struct representing a full recipe
-struct ReceptFull{
-    var id: Int = 0
-    var title: String = ""
-    var image: String = ""
-    var imageType: String = ""
-    var servings: Int = 0
-    var preparationMinutes: Int = 0
-    var cookingMinutes: Int = 0
-    var aggregateLikes: Int = 0
-    var readyInMinutes: Int = 0
-    var license: String = ""
-    var sourceName: String = ""
-    var sourceUrl: String = ""
-    var spoonacularSourceUrl: String = ""
-    var healthScore: Double = 0.0
-    var spoonacularScore: Double = 0.0
-    var pricePerServing: Double = 0.0
-    var analyzedInstructions: [AnalyzedInstruction] = []
-    var cheap: Bool = false
-    var creditsText: String = ""
-    var cuisines: [String] = []
-    var dairyFree: Bool = false
-    var diets: [String] = []
-    var gaps: String = ""
-    var glutenFree: Bool = false
-    var instructions: String = ""
-    var ketogenic: Bool = false
-    var lowFodmap: Bool = false
-    var occasions: [String] = []
-    var sustainble: Bool = false
-    var vegetarian: Bool = false
-    var vegan: Bool = false
-    var veryHealthy: Bool = false
-    var veryPopular: Bool = false
-    var whole30: Bool = false
-    var weightWatcherSmartPoints: Int = 0
-    var dishTypes: [String] = []
-    var extendedIngredients: [extendedIngredient] = []
-    var summary: String = ""
+class ReceptFull: Observable{
+    @Published var id: Int = 0
+    @Published var title: String = ""
+    @Published var image: String = ""
+    @Published var imageType: String = ""
+    @Published var servings: Int = 0
+    @Published var preparationMinutes: Int = 0
+    @Published var cookingMinutes: Int = 0
+    @Published var aggregateLikes: Int = 0
+    @Published var readyInMinutes: Int = 0
+    @Published var license: String = ""
+    @Published var sourceName: String = ""
+    @Published var sourceUrl: String = ""
+    @Published var spoonacularSourceUrl: String = ""
+    @Published var healthScore: Double = 0.0
+    @Published var spoonacularScore: Double = 0.0
+    @Published var pricePerServing: Double = 0.0
+    @Published var analyzedInstructions: [AnalyzedInstruction] = []
+    @Published var cheap: Bool = false
+    @Published var creditsText: String = ""
+    @Published var cuisines: [String] = []
+    @Published var dairyFree: Bool = false
+    @Published var diets: [String] = []
+    @Published var gaps: String = ""
+    @Published var glutenFree: Bool = false
+    @Published var instructions: String = ""
+    @Published var ketogenic: Bool = false
+    @Published var lowFodmap: Bool = false
+    @Published var occasions: [String] = []
+    @Published var sustainble: Bool = false
+    @Published var vegetarian: Bool = false
+    @Published var vegan: Bool = false
+    @Published var veryHealthy: Bool = false
+    @Published var veryPopular: Bool = false
+    @Published var whole30: Bool = false
+    @Published var weightWatcherSmartPoints: Int = 0
+    @Published var dishTypes: [String] = []
+    @Published var extendedIngredients: [extendedIngredient] = []
+    @Published var summary: String = ""
     
 }
 
 // Struct representing an extended ingredient used in a recipe
-struct extendedIngredient{
-    var aisle: String = ""
-    var amount: Double = 0.0
-    var consistency: String = ""
-    var image: String = ""
-    var id: Int = 0
-    var name: String = ""
-    var nameClean: String = ""
-    var original: String = ""
-    var originalName: String = ""
-    var unit: String = ""
-    var meta: [String] = []
-    var measures: Measures?
+class extendedIngredient: Observable{
+    @Published var aisle: String = ""
+    @Published var amount: Double = 0.0
+    @Published var consistency: String = ""
+    @Published var image: String = ""
+    @Published var id: Int = 0
+    @Published var name: String = ""
+    @Published var nameClean: String = ""
+    @Published var original: String = ""
+    @Published var originalName: String = ""
+    @Published var unit: String = ""
+    @Published var meta: [String] = []
+    @Published var measures: Measures?
+    
+    init(){
+        
+    }
+    init(aisle: String, amount: Double, consistency: String, image: String, id: Int, name: String, nameClean: String, original: String, originalName: String, unit: String, meta: [String], measures: Measures? = nil) {
+        self.aisle = aisle
+        self.amount = amount
+        self.consistency = consistency
+        self.image = image
+        self.id = id
+        self.name = name
+        self.nameClean = nameClean
+        self.original = original
+        self.originalName = originalName
+        self.unit = unit
+        self.meta = meta
+        self.measures = measures
+    }
 }
 
+
 // Struct representing measures for an ingredient
-struct Measures{
-    var us: Measure?
-    var metric: Measure?
+class Measures: Observable{
+    @Published var us: Measure = Measure()
+    @Published var metric: Measure = Measure()
+    
+    init(){
+        
+    }
+    init(us: Measure, metric: Measure) {
+        self.us = us
+        self.metric = metric
+    }
 }
 
 // Struct representing a measure for an ingredient
-struct Measure: Decodable{
-    var amount: Double = 0.0
-    var unitShort: String = ""
-    var unitLong: String = ""
+class Measure: Observable{
+    @Published var amount: Double = 0.0
+    @Published var unitShort: String = ""
+    @Published var unitLong: String = ""
+    init(){
+        
+    }
+    init(amount: Double, unitShort: String, unitLong: String) {
+        self.amount = amount
+        self.unitShort = unitShort
+        self.unitLong = unitLong
+    }
 }
