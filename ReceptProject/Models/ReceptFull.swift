@@ -8,7 +8,7 @@
 import Foundation
 
 // Struct representing an ingredient used in a recipe
-class Ingredient: Observable{
+class Ingredient: ObservableObject{
     @Published var id: Int = 0 // Unique identifier
     @Published var name: String = "" // Name of the ingredient
     @Published var localizedName: String = "" // Localized name of the ingredient
@@ -26,7 +26,7 @@ class Ingredient: Observable{
 }
 
 // Struct representing equipment used in a recipe
-class Equipment: Observable{
+class Equipment: ObservableObject{
     @Published var id: Int = 0
     @Published var name: String = ""
     @Published var localizedName: String = ""
@@ -44,7 +44,7 @@ class Equipment: Observable{
 }
 
 // Struct representing a step in the recipe preparation process
-class Step: Observable{
+class Step: ObservableObject{
     @Published var number: Int = 0
     @Published var step: String = ""
     @Published var ingredients: [Ingredient] = []
@@ -62,7 +62,7 @@ class Step: Observable{
 }
 
 // Struct representing an analyzed instruction for preparing a recipe
-class AnalyzedInstruction: Observable{
+class AnalyzedInstruction: ObservableObject{
     @Published var name: String = ""
     @Published var steps: [Step] = []
     
@@ -76,7 +76,7 @@ class AnalyzedInstruction: Observable{
 }
 
 // Struct representing a full recipe
-class ReceptFull: Observable{
+class ReceptFull: ObservableObject{
     @Published var id: Int = 0
     @Published var title: String = ""
     @Published var image: String = ""
@@ -119,7 +119,7 @@ class ReceptFull: Observable{
 }
 
 // Struct representing an extended ingredient used in a recipe
-class extendedIngredient: Observable{
+class extendedIngredient: ObservableObject{
     @Published var aisle: String = ""
     @Published var amount: Double = 0.0
     @Published var consistency: String = ""
@@ -154,7 +154,7 @@ class extendedIngredient: Observable{
 
 
 // Struct representing measures for an ingredient
-class Measures: Observable{
+class Measures: ObservableObject{
     @Published var us: Measure = Measure()
     @Published var metric: Measure = Measure()
     
@@ -168,7 +168,7 @@ class Measures: Observable{
 }
 
 // Struct representing a measure for an ingredient
-class Measure: Observable{
+class Measure: ObservableObject{
     @Published var amount: Double = 0.0
     @Published var unitShort: String = ""
     @Published var unitLong: String = ""

@@ -15,12 +15,12 @@ import WebKit
 import SwiftUI
 
 struct RecipeView: View {
-    @State var recept: ReceptFull = ReceptFull()
+    @ObservedObject var recept: ReceptFull = ReceptFull()
     @ObservedObject var vm = SearchViewModel()
     var id: Int
     var body: some View {
         ZStack{
-            Text(vm.changer)
+            Text(vm.changer)//just a text that changes a little bit after the the recept is gotten to update the view
                 .foregroundStyle(.clear)
             ScrollView(showsIndicators: false){
                 VStack{
@@ -84,11 +84,6 @@ struct RecipeView: View {
             })
         }
         
-    }
-    func getRecept(){
-        ApiService.shared.getRecepie(id: self.id, completion: {recept in
-            self.recept = recept
-        })
     }
     func twoDeci(double: Double) -> String{// because the doubles in recept had too many 
         return String(format: "%.2f", double)
