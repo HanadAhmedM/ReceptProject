@@ -29,6 +29,9 @@ class SearchViewModel: ObservableObject{
         ApiService.shared.getRecepie(id: theId, completion: { recepie in
             DispatchQueue.main.async{
                 self.currentRecepie = recepie
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01){//p.ga syncnings problem behövde jag
+                    self.changer = "uIUpdgggate"
+                }
             }
         })
     }

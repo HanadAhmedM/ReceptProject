@@ -19,8 +19,9 @@ struct RecipeView: View {
     @ObservedObject var vm = SearchViewModel()
     var id: Int
     var body: some View {
-        g
         ZStack{
+            Text(vm.changer)
+                .foregroundStyle(.clear)
             ScrollView(showsIndicators: false){
                 VStack{
                     Text(vm.currentRecepie.title)
