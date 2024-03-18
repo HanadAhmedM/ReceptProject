@@ -15,6 +15,8 @@ class SearchViewModel: ObservableObject{
     // Published property to hold a single ReceptFull object
     @Published var currentRecepie: ReceptFull = ReceptFull()
     
+    @Published var changer: String = "" //a text to change so that the view gets updated
+    
     // Method to fetch recipes based on provided parameters
     func getRecepies(theItems: [String: String]){
         ApiService.shared.getRecepies(someItems: theItems, completion: { recepies in
@@ -27,6 +29,9 @@ class SearchViewModel: ObservableObject{
         ApiService.shared.getRecepie(id: theId, completion: { recepie in
             DispatchQueue.main.async{
                 self.currentRecepie = recepie
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01){//p.ga syncnings problem behövde jag
+                    self.changer = "uIUpdgggate"
+                }
             }
         })
     }

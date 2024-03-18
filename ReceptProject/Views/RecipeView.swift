@@ -15,51 +15,48 @@ import WebKit
 import SwiftUI
 
 struct RecipeView: View {
-    @State var recept: ReceptFull = ReceptFull()
+    @ObservedObject var recept: ReceptFull = ReceptFull()
+    @ObservedObject var vm = SearchViewModel()
     var id: Int
-    @State var changer = ""
     var body: some View {
         ZStack{
-            Text(changer)
+            Text(vm.changer)//just a text that changes a little bit after the the recept is gotten to update the view
                 .foregroundStyle(.clear)
             ScrollView(showsIndicators: false){
                 VStack{
-                    Text(recept.title)
+                    Text(vm.currentRecepie.title)
                         .font(.largeTitle)
                         .foregroundStyle(.green)
-                    AsyncImage(url: URL(string: recept.image))
+                    AsyncImage(url: URL(string: vm.currentRecepie.image))
                     HStack{
                         VStack{
                             Image(systemName: "dollarsign.circle.fill")
                                 .foregroundStyle(.orange)
-                            Text("$\(twoDeci(double: recept.pricePerServing))")
+                            Text("$\(twoDeci(double: vm.currentRecepie.pricePerServing))")
                         }
                         VStack{
                             Image(systemName: "heart.fill")
                                 .foregroundStyle(.red)
-                            Text("\(recept.aggregateLikes) likes")
+                            Text("\(vm.currentRecepie.aggregateLikes) likes")
                         }
                         VStack{
                             Image(systemName: "clock.fill")
                                 .foregroundStyle(.purple)
-                            Text("ready in \(recept.readyInMinutes)")
+                            Text("ready in \(vm.currentRecepie.readyInMinutes)")
                         }
                         VStack{
                             Image(systemName: "speedometer")
                                 .foregroundStyle(.yellow)
-                            Text("spoonacular \nScore: \(twoDeci(double: recept.spoonacularScore))")
+                            Text("spoonacular \nScore: \(twoDeci(double: vm.currentRecepie.spoonacularScore))")
                         }
                     }
                     
-                    Text(htmlToPlainText(htmlString: recept.summary))
-                        .onTapGesture {
-                            print(recept.summary)
-                        }
+                    Text(htmlToPlainText(htmlString: vm.currentRecepie.summary))
                         .background(.yellow)
                         .padding(8)
                         .background(.green)
-                    IngredientsView(ingredients: recept.extendedIngredients)
-                    Text(htmlToPlainText(htmlString: recept.instructions))
+                    IngredientsView(ingredients: vm.currentRecepie.extendedIngredients)
+                    Text(htmlToPlainText(htmlString: vm.currentRecepie.instructions))
                         .onTapGesture {
                             print(recept.summary)
                         }
@@ -75,22 +72,18 @@ struct RecipeView: View {
                 .frame(width: 393)
             }
             .onAppear(perform: {
-                ApiService.shared.getRecepie(id: self.id, completion: {recept in
-                    self.recept = recept
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05){//p.ga syncnings problem behövde jag
-                        changer = "uIUpdgggate"
-                        
-                    }
-                })
+//                ApiService.shared.getRecepie(id: self.id, completion: {recept in
+//                    self.recept = recept
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05){//p.ga syncnings problem behövde jag
+//                        changer = "uIUpdgggate"
+//                        
+//                    }
+//                })
+                vm.getRecepie(theId: id)
                 
             })
         }
         
-    }
-    func getRecept(){
-        ApiService.shared.getRecepie(id: self.id, completion: {recept in
-            self.recept = recept
-        })
     }
     func twoDeci(double: Double) -> String{// because the doubles in recept had too many 
         return String(format: "%.2f", double)

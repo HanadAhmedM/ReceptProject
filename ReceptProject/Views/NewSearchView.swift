@@ -82,9 +82,7 @@ struct NewSearchView: View {
                             AsyncImage(url: URL(string: recepie.image), scale: 2.5)
                                 .cornerRadius(10)
                         })
-
-                        VStack {
-                            HStack {
+                        
                                 Spacer().frame(width: 25) // Fixed width for consistent spacing
                                 // Recipe title
                                 Text(recepie.title)
@@ -124,6 +122,7 @@ struct NewSearchView: View {
                                         dismissButton: .default(Text("OK"))
                                     )
                                 }
+                                .buttonStyle(BorderedButtonStyle())
                                 
                                 // Plus Button
                                 Button(action: {
@@ -157,12 +156,12 @@ struct NewSearchView: View {
                                         dismissButton: .default(Text("OK"))
                                     )
                                 }
+                                .buttonStyle(BorderedButtonStyle())
                                 
                                 
-                            }
-                            .frame(width: 170, height: 100, alignment: .leading)
-                        }
+                        
                     }
+                    .frame(width: 300, height: 90)
                     .sheet(isPresented: $showDaySelection, content: {
                         DaySelectionView(selectedDate: $selectedDate, onCancel: {
                             showDaySelection = false

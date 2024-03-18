@@ -31,6 +31,7 @@
 		DC8C530D2B987C8D00037116 /* ReceptBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C530C2B987C8D00037116 /* ReceptBasic.swift */; };
 		DCF1426B2B9AFE140075585D /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF1426A2B9AFE140075585D /* FilterView.swift */; };
 		DCF142712BA5D57B0075585D /* IngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF142702BA5D57B0075585D /* IngredientView.swift */; };
+		DCF142752BA748D70075585D /* RecipeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF142742BA748D70075585D /* RecipeViewViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		DC8C530C2B987C8D00037116 /* ReceptBasic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceptBasic.swift; sourceTree = "<group>"; };
 		DCF1426A2B9AFE140075585D /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		DCF142702BA5D57B0075585D /* IngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientView.swift; sourceTree = "<group>"; };
+		DCF142742BA748D70075585D /* RecipeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				85C508102BA0C9AD00EDC1A7 /* FavoriteViewModel.swift */,
 				691A14E82BA362BD003DE189 /* MealPlanViewModel.swift */,
 				691A14F42BA3A496003DE189 /* MealPlanPersistence.swift */,
+				DCF142742BA748D70075585D /* RecipeViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				69C4F1552B97AF0E000D4225 /* TabBarView.swift in Sources */,
 				85C508112BA0C9AD00EDC1A7 /* FavoriteViewModel.swift in Sources */,
 				DC23477C2B97748C00CDFF66 /* SearchViewModel.swift in Sources */,
+				DCF142752BA748D70075585D /* RecipeViewViewModel.swift in Sources */,
 				69C4F1552B97AF0E000D4225 /* TabBarView.swift in Sources */,
 				85C5080F2BA0C97C00EDC1A7 /* Persistence.swift in Sources */,
 				691A14F52BA3A496003DE189 /* MealPlanPersistence.swift in Sources */,
